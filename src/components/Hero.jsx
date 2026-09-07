@@ -24,7 +24,7 @@ export default function Hero() {
           className="hero-grid"
         >
           {/* Left Column: Bio & Value Proposition */}
-          <div>
+          <div className="animate-fade-up">
             {/* Live Availability Pill */}
             <div
               style={{
@@ -79,7 +79,7 @@ export default function Hero() {
                 marginBottom: '2rem',
               }}
             >
-              Undergraduate student specializing in Software Engineering. Focused on building clean
+              Undergraduate student specializing in Information Technology. Focused on building clean
               RESTful architectures, responsive React interfaces, and robust database systems.
               Eager to contribute and grow through an internship role.
             </p>
@@ -134,7 +134,7 @@ export default function Hero() {
           </div>
 
           {/* Right Column: User Portrait Frame (Portox Editorial Style) */}
-          <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <div className="animate-fade-in delay-2" style={{ display: 'flex', justifyContent: 'center' }}>
             <div
               style={{
                 position: 'relative',
@@ -211,7 +211,7 @@ export default function Hero() {
                   }}
                 >
                   <GraduationCap size={16} color="var(--accent-primary)" />
-                  <span>Software Engineering • Yr 3</span>
+                  <span>Information Technology • Yr 3</span>
                 </div>
               </div>
 

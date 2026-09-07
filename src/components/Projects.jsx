@@ -29,10 +29,10 @@ export default function Projects() {
             gap: '2.5rem',
           }}
         >
-          {portfolioData.projects.map((project) => (
+          {portfolioData.projects.map((project, index) => (
             <div
               key={project.id}
-              className="portox-card"
+              className={`portox-card animate-fade-up delay-${(index % 5) + 1}`}
               style={{
                 display: 'flex',
                 flexDirection: 'column',
@@ -75,6 +75,25 @@ export default function Projects() {
 
                 <Code2 size={15} color="var(--text-muted)" />
               </div>
+
+              {/* Project Image */}
+              {project.image && (
+                <div style={{ width: '100%', height: '220px', overflow: 'hidden', borderBottom: '1px solid var(--border-color)', background: 'var(--bg-subtle)' }}>
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      display: 'block',
+                      transition: 'transform 0.4s ease',
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
+                    onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+                  />
+                </div>
+              )}
 
               {/* Card Body */}
               <div

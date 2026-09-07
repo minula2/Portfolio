@@ -1,4 +1,5 @@
-import { ArrowUp, Heart, Terminal } from 'lucide-react';
+import React from 'react';
+import { ArrowUp } from 'lucide-react';
 import { GithubIcon } from './Icons';
 import { portfolioData } from '../data/portfolioData';
 
@@ -11,8 +12,8 @@ export default function Footer() {
     <footer
       style={{
         borderTop: '1px solid var(--border-color)',
-        padding: '3.5rem 0 2rem 0',
-        background: '#05070d',
+        padding: '3.5rem 0 2.5rem 0',
+        background: '#ffffff',
         position: 'relative',
         zIndex: 1,
       }}
@@ -26,7 +27,7 @@ export default function Footer() {
             flexWrap: 'wrap',
             gap: '2rem',
             paddingBottom: '2.5rem',
-            borderBottom: '1px solid rgba(255, 255, 255, 0.05)',
+            borderBottom: '1px solid var(--border-subtle)',
           }}
         >
           {/* Brand Info */}
@@ -35,28 +36,25 @@ export default function Footer() {
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: '0.6rem',
+                gap: '0.65rem',
                 fontFamily: 'var(--font-heading)',
                 fontSize: '1.25rem',
                 fontWeight: 700,
                 color: 'var(--text-primary)',
-                marginBottom: '0.4rem',
+                marginBottom: '0.35rem',
               }}
             >
-              <span
+              <img
+                src={portfolioData.personal.avatar}
+                alt={portfolioData.personal.name}
                 style={{
-                  width: '32px',
-                  height: '32px',
-                  borderRadius: '8px',
-                  background: 'linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-cyan) 100%)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: '#ffffff',
+                  width: '28px',
+                  height: '28px',
+                  borderRadius: '50%',
+                  objectFit: 'cover',
+                  border: '1px solid var(--border-color)',
                 }}
-              >
-                <Terminal size={16} />
-              </span>
+              />
               <span>{portfolioData.personal.name}</span>
             </div>
             <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem' }}>
@@ -72,6 +70,7 @@ export default function Footer() {
                 href={`#${item.toLowerCase()}`}
                 style={{
                   fontSize: '0.88rem',
+                  fontWeight: 500,
                   color: 'var(--text-secondary)',
                   transition: 'color 0.2s ease',
                 }}
@@ -88,15 +87,15 @@ export default function Footer() {
             onClick={scrollToTop}
             className="btn btn-secondary"
             style={{
-              padding: '0.6rem 1rem',
+              padding: '0.55rem 1.1rem',
               fontSize: '0.84rem',
               display: 'flex',
               alignItems: 'center',
-              gap: '0.4rem',
+              gap: '0.45rem',
             }}
           >
             <span>Back to Top</span>
-            <ArrowUp size={15} />
+            <ArrowUp size={14} />
           </button>
         </div>
 
@@ -132,7 +131,7 @@ export default function Footer() {
               <span>GitHub Repository</span>
             </a>
             <span>•</span>
-            <span style={{ color: 'var(--accent-emerald)' }}>Hosted on Vercel</span>
+            <span style={{ color: 'var(--accent-emerald)', fontWeight: 500 }}>Hosted on Vercel</span>
           </div>
         </div>
       </div>

@@ -1,36 +1,23 @@
-import { FolderGit2, ExternalLink, Sparkles, CheckCircle2, Code, Terminal, Layers } from 'lucide-react';
+import React from 'react';
+import { FolderGit2, ExternalLink, CheckCircle2, Code2, Terminal, ArrowUpRight } from 'lucide-react';
 import { GithubIcon } from './Icons';
 import { portfolioData } from '../data/portfolioData';
 
 export default function Projects() {
-  const getAccentGradient = (accent) => {
-    switch (accent) {
-      case 'cyan':
-        return 'linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%)';
-      case 'purple':
-        return 'linear-gradient(135deg, #a855f7 0%, #6366f1 100%)';
-      case 'emerald':
-        return 'linear-gradient(135deg, #10b981 0%, #06b6d4 100%)';
-      case 'blue':
-      default:
-        return 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)';
-    }
-  };
-
   return (
-    <section id="projects" className="section-wrapper">
+    <section id="projects" className="section-wrapper" style={{ background: '#ffffff', borderTop: '1px solid var(--border-color)', borderBottom: '1px solid var(--border-color)' }}>
       <div className="container">
         {/* Section Header */}
         <div className="section-header">
           <span className="section-badge">
-            <FolderGit2 size={15} />
-            <span>Featured Work</span>
+            <FolderGit2 size={14} />
+            <span>University Projects</span>
           </span>
           <h2 className="section-title">
-            Featured <span className="text-gradient">Full-Stack Projects</span>
+            Featured <span style={{ color: 'var(--text-secondary)' }}>Academic & Practical Work</span>
           </h2>
           <p className="section-subtitle">
-            Curated software engineering and full-stack projects showcasing scalable architectures, RESTful APIs, and responsive frontends.
+            Real software engineering projects, automated testing frameworks, and full-stack applications completed throughout my university degree.
           </p>
         </div>
 
@@ -38,31 +25,58 @@ export default function Projects() {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
-            gap: '2rem',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+            gap: '2.5rem',
           }}
         >
           {portfolioData.projects.map((project) => (
             <div
               key={project.id}
-              className="glass-card"
+              className="portox-card"
               style={{
                 display: 'flex',
                 flexDirection: 'column',
-                borderRadius: 'var(--radius-md)',
                 overflow: 'hidden',
-                position: 'relative',
+                borderRadius: 'var(--radius-md)',
               }}
             >
-              {/* Card Accent Top Banner */}
+              {/* Portox Browser Mockup Frame */}
               <div
                 style={{
-                  height: '4px',
-                  width: '100%',
-                  background: getAccentGradient(project.accent),
+                  background: 'var(--bg-subtle)',
+                  borderBottom: '1px solid var(--border-color)',
+                  padding: '0.85rem 1.25rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
                 }}
-              />
+              >
+                {/* Window Traffic Dots */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ef4444' }}></span>
+                  <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#f59e0b' }}></span>
+                  <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#10b981' }}></span>
+                </div>
 
+                {/* Minimalist URL slug */}
+                <div
+                  style={{
+                    background: '#ffffff',
+                    border: '1px solid var(--border-color)',
+                    borderRadius: 'var(--radius-full)',
+                    padding: '0.2rem 0.85rem',
+                    fontSize: '0.74rem',
+                    fontFamily: 'var(--font-mono)',
+                    color: 'var(--text-muted)',
+                  }}
+                >
+                  github.com/{project.id}
+                </div>
+
+                <Code2 size={15} color="var(--text-muted)" />
+              </div>
+
+              {/* Card Body */}
               <div
                 style={{
                   padding: '2rem',
@@ -73,7 +87,7 @@ export default function Projects() {
                 }}
               >
                 <div>
-                  {/* Top Metadata Row */}
+                  {/* Category & Badge */}
                   <div
                     style={{
                       display: 'flex',
@@ -88,7 +102,7 @@ export default function Projects() {
                       style={{
                         fontSize: '0.78rem',
                         fontWeight: 600,
-                        color: 'var(--accent-cyan)',
+                        color: 'var(--text-muted)',
                         textTransform: 'uppercase',
                         letterSpacing: '0.04em',
                       }}
@@ -98,13 +112,13 @@ export default function Projects() {
 
                     <span
                       style={{
-                        fontSize: '0.75rem',
+                        fontSize: '0.76rem',
                         fontWeight: 600,
-                        padding: '0.25rem 0.65rem',
+                        padding: '0.25rem 0.75rem',
                         borderRadius: 'var(--radius-full)',
-                        background: 'rgba(99, 102, 241, 0.12)',
-                        border: '1px solid rgba(99, 102, 241, 0.25)',
-                        color: 'var(--accent-primary)',
+                        background: 'var(--bg-subtle)',
+                        border: '1px solid var(--border-color)',
+                        color: 'var(--text-primary)',
                       }}
                     >
                       {project.badge}
@@ -115,6 +129,7 @@ export default function Projects() {
                   <h3
                     style={{
                       fontSize: '1.35rem',
+                      fontWeight: 700,
                       marginBottom: '0.75rem',
                       lineHeight: 1.3,
                       color: 'var(--text-primary)',
@@ -126,7 +141,7 @@ export default function Projects() {
                   {/* Summary */}
                   <p
                     style={{
-                      fontSize: '0.94rem',
+                      fontSize: '0.95rem',
                       color: 'var(--text-secondary)',
                       lineHeight: 1.6,
                       marginBottom: '1.25rem',
@@ -135,37 +150,37 @@ export default function Projects() {
                     {project.summary}
                   </p>
 
-                  {/* Technical Highlights */}
+                  {/* Key Implementation Highlights */}
                   <div style={{ marginBottom: '1.5rem' }}>
                     <div
                       style={{
-                        fontSize: '0.8rem',
+                        fontSize: '0.78rem',
                         fontWeight: 600,
                         color: 'var(--text-muted)',
                         textTransform: 'uppercase',
                         letterSpacing: '0.04em',
-                        marginBottom: '0.6rem',
+                        marginBottom: '0.65rem',
                       }}
                     >
-                      Key Implementation Highlights:
+                      Key Technical Contributions:
                     </div>
-                    <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
+                    <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                       {project.keyFeatures.map((feature, idx) => (
                         <li
                           key={idx}
                           style={{
                             display: 'flex',
                             alignItems: 'flex-start',
-                            gap: '0.5rem',
+                            gap: '0.55rem',
                             fontSize: '0.88rem',
                             color: 'var(--text-secondary)',
                             lineHeight: 1.5,
                           }}
                         >
                           <CheckCircle2
-                            size={15}
+                            size={16}
                             color="var(--accent-emerald)"
-                            style={{ flexShrink: 0, marginTop: '3px' }}
+                            style={{ flexShrink: 0, marginTop: '2px' }}
                           />
                           <span>{feature}</span>
                         </li>
@@ -174,30 +189,30 @@ export default function Projects() {
                   </div>
                 </div>
 
-                {/* Bottom Section: Tech Tags & Links */}
+                {/* Bottom Section: Tech Tags & Action Buttons */}
                 <div>
                   {/* Tech Tags */}
                   <div
                     style={{
                       display: 'flex',
                       flexWrap: 'wrap',
-                      gap: '0.5rem',
+                      gap: '0.45rem',
                       paddingTop: '1.25rem',
                       marginBottom: '1.5rem',
-                      borderTop: '1px solid var(--border-color)',
+                      borderTop: '1px solid var(--border-subtle)',
                     }}
                   >
                     {project.tags.map((tag, idx) => (
                       <span
                         key={idx}
                         style={{
-                          fontSize: '0.78rem',
+                          fontSize: '0.76rem',
                           fontFamily: 'var(--font-mono)',
-                          padding: '0.25rem 0.65rem',
+                          padding: '0.2rem 0.6rem',
                           borderRadius: '6px',
-                          background: 'rgba(255, 255, 255, 0.04)',
-                          border: '1px solid rgba(255, 255, 255, 0.08)',
-                          color: '#e2e8f0',
+                          background: 'var(--bg-subtle)',
+                          border: '1px solid var(--border-color)',
+                          color: 'var(--text-secondary)',
                         }}
                       >
                         {tag}
@@ -206,32 +221,32 @@ export default function Projects() {
                   </div>
 
                   {/* Action Links */}
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                     <a
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="btn btn-secondary"
+                      className="btn btn-primary"
                       style={{
                         flex: 1,
-                        padding: '0.6rem 1rem',
-                        fontSize: '0.88rem',
+                        padding: '0.65rem 1rem',
+                        fontSize: '0.86rem',
                       }}
                     >
                       <GithubIcon size={16} />
-                      <span>Source Code</span>
+                      <span>GitHub Code</span>
+                      <ArrowUpRight size={14} />
                     </a>
 
                     <a
                       href="#contact"
-                      className="btn btn-outline"
+                      className="btn btn-secondary"
                       style={{
-                        padding: '0.6rem 1rem',
-                        fontSize: '0.88rem',
+                        padding: '0.65rem 1rem',
+                        fontSize: '0.86rem',
                       }}
                     >
-                      <ExternalLink size={16} />
-                      <span>Details</span>
+                      <span>Inquire</span>
                     </a>
                   </div>
                 </div>

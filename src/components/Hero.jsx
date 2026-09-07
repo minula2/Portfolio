@@ -1,58 +1,9 @@
-import React, { useState } from 'react';
-import { ArrowRight, Download, Mail, Sparkles, Check, Copy, Code2, Database, Server } from 'lucide-react';
+import React from 'react';
+import { ArrowRight, Mail, MapPin, GraduationCap, Sparkles, CheckCircle2 } from 'lucide-react';
 import { GithubIcon } from './Icons';
 import { portfolioData } from '../data/portfolioData';
 
 export default function Hero() {
-  const [activeTab, setActiveTab] = useState('minula.ts');
-  const [copied, setCopied] = useState(false);
-
-  const codeSnippets = {
-    'minula.ts': `// Developer Profile
-interface FullStackEngineer {
-  name: string;
-  role: string;
-  education: string;
-  seeking: string;
-  skills: string[];
-}
-
-export const candidate: FullStackEngineer = {
-  name: "Minula",
-  role: "Full-Stack Developer",
-  education: "BSc (Hons) IT / Software Engineering",
-  seeking: "Internship (Immediate / Summer)",
-  skills: [
-    "React.js", "Node.js", "Java / Spring Boot",
-    "PostgreSQL", "MongoDB", "REST APIs", "Docker"
-  ],
-  readyToContribute: true
-};`,
-    'tech-stack.json': `{
-  "developer": "Minula",
-  "frontend": ["React", "JavaScript (ES6+)", "HTML5/CSS3", "Vite"],
-  "backend": ["Node.js", "Express", "Spring Boot", "REST APIs"],
-  "databases": ["PostgreSQL", "MongoDB", "MySQL"],
-  "devops_tools": ["Git", "GitHub", "Docker", "Vercel", "Postman"],
-  "status": "Ready for Internship Interview"
-}`,
-    'status.sh': `#!/usr/bin/env bash
-# Checking candidate availability
-$ agy check-candidate --name "Minula"
-
-[OK] Academic Foundations: Strong (Year 3 Undergraduate)
-[OK] Problem Solving: Algorithms & Data Structures
-[OK] Full-Stack Architecture: End-to-End Ready
-[OK] Collaboration: Agile & Git Certified
->>> Status: 100% READY FOR INTERNSHIP OFFER`
-  };
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText(codeSnippets[activeTab]);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
   return (
     <section
       id="home"
@@ -60,7 +11,6 @@ $ agy check-candidate --name "Minula"
         paddingTop: '8.5rem',
         paddingBottom: '5rem',
         position: 'relative',
-        overflow: 'hidden',
       }}
     >
       <div className="container">
@@ -73,28 +23,28 @@ $ agy check-candidate --name "Minula"
           }}
           className="hero-grid"
         >
-          {/* Left Column: Hero Text & Call to Actions */}
+          {/* Left Column: Bio & Value Proposition */}
           <div>
             {/* Live Availability Pill */}
             <div
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '0.65rem',
-                padding: '0.45rem 1.1rem',
-                background: 'rgba(16, 185, 129, 0.1)',
-                border: '1px solid rgba(16, 185, 129, 0.25)',
+                gap: '0.6rem',
+                padding: '0.4rem 1rem',
+                background: '#ffffff',
+                border: '1px solid var(--border-color)',
                 borderRadius: 'var(--radius-full)',
                 marginBottom: '1.5rem',
+                boxShadow: 'var(--shadow-sm)',
               }}
             >
               <span className="pulse-dot"></span>
               <span
                 style={{
-                  fontSize: '0.86rem',
+                  fontSize: '0.84rem',
                   fontWeight: 600,
-                  color: 'var(--accent-emerald)',
-                  letterSpacing: '0.01em',
+                  color: 'var(--text-primary)',
                 }}
               >
                 {portfolioData.personal.status}
@@ -104,21 +54,22 @@ $ agy check-candidate --name "Minula"
             {/* Main Headline */}
             <h1
               style={{
-                fontSize: 'clamp(2.5rem, 5vw, 3.8rem)',
+                fontSize: 'clamp(2.5rem, 5.2vw, 3.8rem)',
                 fontWeight: 800,
-                letterSpacing: '-0.03em',
+                letterSpacing: '-0.035em',
                 lineHeight: 1.15,
                 marginBottom: '1.25rem',
+                color: 'var(--text-primary)',
               }}
             >
-              Hi, I'm <span className="text-gradient">Minula</span>
+              Hey, I'm {portfolioData.personal.name} —
               <br />
-              <span className="text-gradient-cyan" style={{ fontSize: '0.9em' }}>
+              <span style={{ color: 'var(--text-secondary)', fontWeight: 600 }}>
                 Full-Stack Developer
               </span>
             </h1>
 
-            {/* Value Proposition */}
+            {/* Subtitle */}
             <p
               style={{
                 fontSize: '1.12rem',
@@ -128,31 +79,29 @@ $ agy check-candidate --name "Minula"
                 marginBottom: '2rem',
               }}
             >
-              Undergraduate student passionate about engineering clean RESTful APIs,
-              modular React user interfaces, and robust database architectures.
-              Driven to learn rapidly and contribute value to dynamic software teams.
+              Undergraduate student specializing in Software Engineering. Focused on building clean
+              RESTful architectures, responsive React interfaces, and robust database systems.
+              Eager to contribute and grow through an internship role.
             </p>
 
-            {/* Quick Metrics Bar */}
+            {/* Quick Metrics Strip */}
             <div
+              className="portox-card"
               style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))',
                 gap: '1rem',
-                padding: '1.25rem',
-                background: 'rgba(255, 255, 255, 0.025)',
-                border: '1px solid var(--border-color)',
-                borderRadius: 'var(--radius-md)',
+                padding: '1.25rem 1.5rem',
                 marginBottom: '2.25rem',
-                maxWidth: '580px',
+                maxWidth: '560px',
               }}
             >
               {portfolioData.personal.quickStats.map((stat, i) => (
                 <div key={i}>
-                  <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                  <div style={{ fontSize: '0.76rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
                     {stat.label}
                   </div>
-                  <div style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text-primary)', marginTop: '0.15rem' }}>
+                  <div style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text-primary)', marginTop: '0.2rem' }}>
                     {stat.value}
                   </div>
                 </div>
@@ -160,15 +109,14 @@ $ agy check-candidate --name "Minula"
             </div>
 
             {/* Action Buttons */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center' }}>
-              <a href="#projects" className="btn btn-primary" style={{ padding: '0.85rem 1.6rem' }}>
-                <span>View My Projects</span>
-                <ArrowRight size={17} />
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.9rem', alignItems: 'center' }}>
+              <a href="#contact" className="btn btn-primary" style={{ padding: '0.85rem 1.6rem' }}>
+                <span>Get In Touch</span>
+                <ArrowRight size={16} />
               </a>
 
-              <a href="#contact" className="btn btn-secondary" style={{ padding: '0.85rem 1.5rem' }}>
-                <Mail size={17} />
-                <span>Contact for Internship</span>
+              <a href="#projects" className="btn btn-secondary" style={{ padding: '0.85rem 1.6rem' }}>
+                <span>View University Projects</span>
               </a>
 
               <a
@@ -185,137 +133,102 @@ $ agy check-candidate --name "Minula"
             </div>
           </div>
 
-          {/* Right Column: Interactive Code & Architecture Terminal */}
-          <div>
+          {/* Right Column: User Portrait Frame (Portox Editorial Style) */}
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
             <div
-              className="glass-card"
               style={{
-                borderRadius: 'var(--radius-md)',
-                overflow: 'hidden',
-                boxShadow: '0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px var(--accent-glow)',
-                border: '1px solid rgba(255, 255, 255, 0.12)',
+                position: 'relative',
+                width: '100%',
+                maxWidth: '420px',
               }}
             >
-              {/* Terminal Window Bar */}
+              {/* Image Frame Card */}
               <div
                 style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  padding: '0.75rem 1rem',
-                  background: 'rgba(10, 15, 29, 0.95)',
-                  borderBottom: '1px solid var(--border-color)',
+                  background: '#ffffff',
+                  border: '1px solid var(--border-color)',
+                  borderRadius: 'var(--radius-lg)',
+                  padding: '12px',
+                  boxShadow: 'var(--shadow-lg)',
+                  position: 'relative',
+                  overflow: 'hidden',
                 }}
               >
-                {/* Traffic lights */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
-                  <span style={{ width: '11px', height: '11px', borderRadius: '50%', background: '#ef4444' }}></span>
-                  <span style={{ width: '11px', height: '11px', borderRadius: '50%', background: '#f59e0b' }}></span>
-                  <span style={{ width: '11px', height: '11px', borderRadius: '50%', background: '#10b981' }}></span>
-                  <span style={{ marginLeft: '0.5rem', fontSize: '0.8rem', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>
-                    intern-profile ~ fullstack
-                  </span>
-                </div>
-
-                {/* Copy button */}
-                <button
-                  onClick={handleCopy}
-                  title="Copy snippet"
+                <img
+                  src={portfolioData.personal.avatar}
+                  alt={portfolioData.personal.fullName}
                   style={{
+                    width: '100%',
+                    height: '460px',
+                    objectFit: 'cover',
+                    borderRadius: 'calc(var(--radius-lg) - 8px)',
+                    display: 'block',
+                  }}
+                />
+
+                {/* Floating badge 1 (Top right: Ready to contribute) */}
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: '24px',
+                    right: '24px',
+                    background: 'rgba(255, 255, 255, 0.94)',
+                    backdropFilter: 'blur(10px)',
+                    border: '1px solid var(--border-color)',
+                    padding: '0.45rem 0.9rem',
+                    borderRadius: 'var(--radius-full)',
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '0.35rem',
-                    background: 'transparent',
-                    border: 'none',
-                    color: copied ? 'var(--accent-emerald)' : 'var(--text-muted)',
-                    fontSize: '0.78rem',
-                    cursor: 'pointer',
-                    padding: '0.2rem 0.5rem',
-                    borderRadius: '4px',
-                    transition: 'color 0.2s ease',
+                    gap: '0.5rem',
+                    fontSize: '0.8rem',
+                    fontWeight: 600,
+                    boxShadow: 'var(--shadow-md)',
+                    color: 'var(--text-primary)',
                   }}
                 >
-                  {copied ? <Check size={14} /> : <Copy size={14} />}
-                  <span>{copied ? 'Copied' : 'Copy'}</span>
-                </button>
-              </div>
-
-              {/* Code File Tabs */}
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  background: 'rgba(15, 23, 42, 0.8)',
-                  borderBottom: '1px solid var(--border-color)',
-                  overflowX: 'auto',
-                }}
-              >
-                {Object.keys(codeSnippets).map((tab) => (
-                  <button
-                    key={tab}
-                    onClick={() => setActiveTab(tab)}
-                    style={{
-                      padding: '0.6rem 1.1rem',
-                      fontSize: '0.82rem',
-                      fontFamily: 'var(--font-mono)',
-                      background: activeTab === tab ? 'rgba(99, 102, 241, 0.15)' : 'transparent',
-                      color: activeTab === tab ? 'var(--text-primary)' : 'var(--text-muted)',
-                      border: 'none',
-                      borderBottom: activeTab === tab ? '2px solid var(--accent-primary)' : '2px solid transparent',
-                      cursor: 'pointer',
-                      transition: 'all 0.2s ease',
-                      whiteSpace: 'nowrap',
-                    }}
-                  >
-                    {tab}
-                  </button>
-                ))}
-              </div>
-
-              {/* Code Content Container */}
-              <div
-                style={{
-                  padding: '1.3rem',
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '0.86rem',
-                  lineHeight: 1.6,
-                  color: '#cbd5e1',
-                  background: '#0a0f1d',
-                  overflowX: 'auto',
-                  minHeight: '290px',
-                }}
-              >
-                <pre style={{ margin: 0 }}>
-                  <code>{codeSnippets[activeTab]}</code>
-                </pre>
-              </div>
-
-              {/* Terminal Footer Info */}
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  padding: '0.65rem 1rem',
-                  background: 'rgba(10, 15, 29, 0.85)',
-                  borderTop: '1px solid var(--border-color)',
-                  fontSize: '0.78rem',
-                  color: 'var(--text-muted)',
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                  <span style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
-                    <Code2 size={13} color="var(--accent-primary)" /> Frontend
-                  </span>
-                  <span style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
-                    <Server size={13} color="var(--accent-cyan)" /> Backend
-                  </span>
-                  <span style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
-                    <Database size={13} color="var(--accent-purple)" /> Databases
-                  </span>
+                  <span className="pulse-dot"></span>
+                  <span>Intern Ready</span>
                 </div>
-                <span style={{ color: 'var(--accent-emerald)' }}>UTF-8</span>
+
+                {/* Floating badge 2 (Bottom left: Degree info) */}
+                <div
+                  style={{
+                    position: 'absolute',
+                    bottom: '24px',
+                    left: '24px',
+                    background: 'rgba(255, 255, 255, 0.94)',
+                    backdropFilter: 'blur(10px)',
+                    border: '1px solid var(--border-color)',
+                    padding: '0.5rem 1rem',
+                    borderRadius: 'var(--radius-full)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.55rem',
+                    fontSize: '0.82rem',
+                    fontWeight: 600,
+                    boxShadow: 'var(--shadow-md)',
+                    color: 'var(--text-primary)',
+                  }}
+                >
+                  <GraduationCap size={16} color="var(--accent-primary)" />
+                  <span>Software Engineering • Yr 3</span>
+                </div>
               </div>
+
+              {/* Decorative Subtle Background Backplate */}
+              <div
+                style={{
+                  position: 'absolute',
+                  top: '-12px',
+                  right: '-12px',
+                  width: '100%',
+                  height: '100%',
+                  background: 'var(--bg-subtle)',
+                  borderRadius: 'var(--radius-lg)',
+                  border: '1px solid var(--border-subtle)',
+                  zIndex: -1,
+                }}
+              />
             </div>
           </div>
         </div>

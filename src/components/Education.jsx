@@ -1,34 +1,33 @@
 import React from 'react';
-import { GraduationCap, Calendar, Award, BookOpen, CheckCircle } from 'lucide-react';
+import { GraduationCap, Calendar, BookOpen, CheckCircle } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
 export default function Education() {
   return (
-    <section id="education" className="section-wrapper" style={{ background: 'rgba(11, 17, 33, 0.4)' }}>
+    <section id="education" className="section-wrapper">
       <div className="container">
         {/* Section Header */}
         <div className="section-header">
           <span className="section-badge">
-            <GraduationCap size={15} />
-            <span>Education</span>
+            <GraduationCap size={14} />
+            <span>Academic Background</span>
           </span>
           <h2 className="section-title">
-            Academic <span className="text-gradient">Foundations</span>
+            Education & <span style={{ color: 'var(--text-secondary)' }}>Qualifications</span>
           </h2>
           <p className="section-subtitle">
-            Formal computer science and software engineering education supporting my practical development capabilities.
+            Formal computer science and software engineering studies backing my practical development capabilities.
           </p>
         </div>
 
-        {/* Education Timeline / Cards */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', maxWidth: '880px', margin: '0 auto' }}>
+        {/* Education List */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', maxWidth: '860px', margin: '0 auto' }}>
           {portfolioData.education.map((edu, index) => (
             <div
               key={index}
-              className="glass-card"
+              className="portox-card"
               style={{
-                padding: '2.25rem',
-                position: 'relative',
+                padding: '2.5rem',
               }}
             >
               {/* Header Info */}
@@ -47,17 +46,21 @@ export default function Education() {
                     style={{
                       display: 'inline-flex',
                       alignItems: 'center',
-                      gap: '0.4rem',
+                      gap: '0.45rem',
                       fontSize: '0.82rem',
                       fontWeight: 600,
-                      color: 'var(--accent-primary)',
-                      marginBottom: '0.4rem',
+                      color: 'var(--text-primary)',
+                      background: 'var(--bg-subtle)',
+                      padding: '0.2rem 0.65rem',
+                      borderRadius: 'var(--radius-full)',
+                      border: '1px solid var(--border-color)',
+                      marginBottom: '0.65rem',
                     }}
                   >
-                    <BookOpen size={14} />
+                    <BookOpen size={13} />
                     <span>{edu.status}</span>
                   </div>
-                  <h3 style={{ fontSize: '1.35rem', marginBottom: '0.35rem' }}>{edu.degree}</h3>
+                  <h3 style={{ fontSize: '1.35rem', fontWeight: 700, marginBottom: '0.35rem' }}>{edu.degree}</h3>
                   <div style={{ fontSize: '1rem', color: 'var(--text-secondary)' }}>{edu.institution}</div>
                 </div>
 
@@ -65,13 +68,13 @@ export default function Education() {
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
-                    gap: '0.4rem',
+                    gap: '0.45rem',
                     padding: '0.35rem 0.85rem',
                     borderRadius: 'var(--radius-full)',
-                    background: 'rgba(255, 255, 255, 0.04)',
+                    background: 'var(--bg-subtle)',
                     border: '1px solid var(--border-color)',
                     fontSize: '0.84rem',
-                    color: 'var(--text-muted)',
+                    color: 'var(--text-secondary)',
                   }}
                 >
                   <Calendar size={14} />
@@ -80,7 +83,7 @@ export default function Education() {
               </div>
 
               {/* Description */}
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.96rem', lineHeight: 1.6, marginBottom: '1.5rem' }}>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '0.98rem', lineHeight: 1.65, marginBottom: '1.5rem' }}>
                 {edu.description}
               </p>
 
@@ -88,7 +91,7 @@ export default function Education() {
               <div style={{ marginBottom: '1.5rem' }}>
                 <div
                   style={{
-                    fontSize: '0.8rem',
+                    fontSize: '0.78rem',
                     fontWeight: 600,
                     color: 'var(--text-muted)',
                     textTransform: 'uppercase',
@@ -103,12 +106,13 @@ export default function Education() {
                     <span
                       key={idx}
                       style={{
-                        fontSize: '0.84rem',
+                        fontSize: '0.82rem',
+                        fontWeight: 500,
                         padding: '0.3rem 0.75rem',
-                        borderRadius: '6px',
-                        background: 'rgba(99, 102, 241, 0.08)',
-                        border: '1px solid rgba(99, 102, 241, 0.18)',
-                        color: '#c7d2fe',
+                        borderRadius: 'var(--radius-full)',
+                        background: 'var(--bg-subtle)',
+                        border: '1px solid var(--border-color)',
+                        color: 'var(--text-primary)',
                       }}
                     >
                       {course}
@@ -121,7 +125,7 @@ export default function Education() {
               <div
                 style={{
                   paddingTop: '1.25rem',
-                  borderTop: '1px solid var(--border-color)',
+                  borderTop: '1px solid var(--border-subtle)',
                   display: 'flex',
                   flexDirection: 'column',
                   gap: '0.5rem',
@@ -133,8 +137,8 @@ export default function Education() {
                     style={{
                       display: 'flex',
                       alignItems: 'center',
-                      gap: '0.5rem',
-                      fontSize: '0.88rem',
+                      gap: '0.55rem',
+                      fontSize: '0.9rem',
                       color: 'var(--text-secondary)',
                     }}
                   >

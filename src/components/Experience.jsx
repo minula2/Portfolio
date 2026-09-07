@@ -1,19 +1,19 @@
 import React from 'react';
-import { Briefcase, Calendar, CheckCircle2, ChevronRight, Laptop } from 'lucide-react';
+import { Briefcase, Calendar, CheckCircle2, Laptop } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
 export default function Experience() {
   return (
-    <section id="experience" className="section-wrapper">
+    <section id="experience" className="section-wrapper" style={{ background: '#ffffff', borderTop: '1px solid var(--border-color)', borderBottom: '1px solid var(--border-color)' }}>
       <div className="container">
         {/* Section Header */}
         <div className="section-header">
           <span className="section-badge">
-            <Briefcase size={15} />
-            <span>Experience & Leadership</span>
+            <Briefcase size={14} />
+            <span>Practical Experience</span>
           </span>
           <h2 className="section-title">
-            Hands-on <span className="text-gradient">Engineering Experience</span>
+            Engineering & <span style={{ color: 'var(--text-secondary)' }}>Project Leadership</span>
           </h2>
           <p className="section-subtitle">
             Demonstrating teamwork, version control rigor, and full-stack software delivery.
@@ -21,14 +21,13 @@ export default function Experience() {
         </div>
 
         {/* Experience List */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', maxWidth: '880px', margin: '0 auto' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', maxWidth: '860px', margin: '0 auto' }}>
           {portfolioData.experience.map((exp, index) => (
             <div
               key={index}
-              className="glass-card"
+              className="portox-card"
               style={{
-                padding: '2.25rem',
-                position: 'relative',
+                padding: '2.5rem',
               }}
             >
               {/* Header */}
@@ -47,17 +46,21 @@ export default function Experience() {
                     style={{
                       display: 'inline-flex',
                       alignItems: 'center',
-                      gap: '0.4rem',
+                      gap: '0.45rem',
                       fontSize: '0.82rem',
                       fontWeight: 600,
-                      color: 'var(--accent-cyan)',
-                      marginBottom: '0.4rem',
+                      color: 'var(--text-primary)',
+                      background: 'var(--bg-subtle)',
+                      padding: '0.2rem 0.65rem',
+                      borderRadius: 'var(--radius-full)',
+                      border: '1px solid var(--border-color)',
+                      marginBottom: '0.65rem',
                     }}
                   >
-                    <Laptop size={14} />
+                    <Laptop size={13} />
                     <span>{exp.type}</span>
                   </div>
-                  <h3 style={{ fontSize: '1.35rem', marginBottom: '0.25rem' }}>{exp.role}</h3>
+                  <h3 style={{ fontSize: '1.35rem', fontWeight: 700, marginBottom: '0.25rem' }}>{exp.role}</h3>
                   <div style={{ fontSize: '1.02rem', color: 'var(--text-secondary)' }}>{exp.organization}</div>
                 </div>
 
@@ -65,13 +68,13 @@ export default function Experience() {
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
-                    gap: '0.4rem',
+                    gap: '0.45rem',
                     padding: '0.35rem 0.85rem',
                     borderRadius: 'var(--radius-full)',
-                    background: 'rgba(255, 255, 255, 0.04)',
+                    background: 'var(--bg-subtle)',
                     border: '1px solid var(--border-color)',
                     fontSize: '0.84rem',
-                    color: 'var(--text-muted)',
+                    color: 'var(--text-secondary)',
                   }}
                 >
                   <Calendar size={14} />
@@ -88,14 +91,14 @@ export default function Experience() {
                       display: 'flex',
                       alignItems: 'flex-start',
                       gap: '0.65rem',
-                      fontSize: '0.94rem',
+                      fontSize: '0.95rem',
                       color: 'var(--text-secondary)',
                       lineHeight: 1.6,
                     }}
                   >
                     <CheckCircle2
                       size={17}
-                      color="var(--accent-primary)"
+                      color="var(--accent-emerald)"
                       style={{ flexShrink: 0, marginTop: '3px' }}
                     />
                     <span>{resp}</span>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Mail, Copy, Check, MapPin, Send, MessageSquare, Sparkles } from 'lucide-react';
-import { GithubIcon, LinkedinIcon } from './Icons';
+import { Mail, Copy, Check, MapPin, Send, MessageSquare } from 'lucide-react';
+import { GithubIcon } from './Icons';
 import { portfolioData } from '../data/portfolioData';
 
 export default function Contact() {
@@ -33,23 +33,23 @@ export default function Contact() {
         message: '',
       });
       setTimeout(() => setSubmitted(false), 5000);
-    }, 800);
+    }, 700);
   };
 
   return (
-    <section id="contact" className="section-wrapper" style={{ background: 'rgba(11, 17, 33, 0.4)' }}>
+    <section id="contact" className="section-wrapper">
       <div className="container">
         {/* Section Header */}
         <div className="section-header">
           <span className="section-badge">
-            <Mail size={15} />
-            <span>Contact</span>
+            <Mail size={14} />
+            <span>Get in Touch</span>
           </span>
           <h2 className="section-title">
-            Let's Connect for <span className="text-gradient">Internships</span>
+            Let's Connect for <span style={{ color: 'var(--text-secondary)' }}>Internship Opportunities</span>
           </h2>
           <p className="section-subtitle">
-            I am actively seeking Full-Stack / Software Engineering internship opportunities. Feel free to reach out directly or drop a message!
+            I am actively seeking Software Engineering & Full-Stack Developer internship roles. Feel free to reach out directly or send a message below!
           </p>
         </div>
 
@@ -58,35 +58,37 @@ export default function Contact() {
             display: 'grid',
             gridTemplateColumns: '1fr',
             gap: '2.5rem',
-            maxWidth: '1020px',
+            maxWidth: '1000px',
             margin: '0 auto',
           }}
           className="contact-grid"
         >
-          {/* Left Column: Direct Info & Quick Copy */}
+          {/* Left Column: Direct Contact Info */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
             <div
-              className="glass-card"
+              className="portox-card"
               style={{
-                padding: '2.25rem',
+                padding: '2.5rem',
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '1.5rem',
+                gap: '1.75rem',
               }}
             >
               <div>
-                <h3 style={{ fontSize: '1.35rem', marginBottom: '0.5rem' }}>Ready to Add Value</h3>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '0.96rem', lineHeight: 1.6 }}>
-                  Whether you're hiring interns for frontend, backend, or full-stack engineering, I'd love to chat about how my skills can support your engineering team.
+                <h3 style={{ fontSize: '1.35rem', fontWeight: 700, marginBottom: '0.4rem' }}>
+                  Ready to Contribute
+                </h3>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.98rem', lineHeight: 1.6 }}>
+                  Whether you have an internship opening in frontend, backend, or full-stack engineering, I'd welcome the chance to talk about how I can add value to your team.
                 </p>
               </div>
 
-              {/* Email Copy Card */}
+              {/* Email Direct Box with Copy Button */}
               <div
                 style={{
                   padding: '1.25rem',
                   borderRadius: 'var(--radius-sm)',
-                  background: 'rgba(255, 255, 255, 0.03)',
+                  background: 'var(--bg-subtle)',
                   border: '1px solid var(--border-color)',
                   display: 'flex',
                   alignItems: 'center',
@@ -95,25 +97,26 @@ export default function Contact() {
                   flexWrap: 'wrap',
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
                   <div
                     style={{
-                      width: '40px',
-                      height: '40px',
+                      width: '42px',
+                      height: '42px',
                       borderRadius: '10px',
-                      background: 'rgba(99, 102, 241, 0.15)',
+                      background: '#ffffff',
+                      border: '1px solid var(--border-color)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                     }}
                   >
-                    <Mail size={20} color="var(--accent-primary)" />
+                    <Mail size={18} color="var(--text-primary)" />
                   </div>
                   <div>
                     <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>Direct Email</div>
                     <a
                       href={`mailto:${portfolioData.personal.email}`}
-                      style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--text-primary)' }}
+                      style={{ fontSize: '0.96rem', fontWeight: 600, color: 'var(--text-primary)' }}
                     >
                       {portfolioData.personal.email}
                     </a>
@@ -124,64 +127,65 @@ export default function Contact() {
                   onClick={handleCopyEmail}
                   className="btn btn-secondary"
                   style={{
-                    padding: '0.5rem 0.9rem',
-                    fontSize: '0.84rem',
-                    color: copied ? 'var(--accent-emerald)' : 'var(--text-primary)',
-                    borderColor: copied ? 'var(--accent-emerald)' : 'var(--border-color)',
+                    padding: '0.5rem 1rem',
+                    fontSize: '0.82rem',
+                    background: '#ffffff',
                   }}
                 >
-                  {copied ? <Check size={14} /> : <Copy size={14} />}
+                  {copied ? <Check size={14} color="var(--accent-emerald)" /> : <Copy size={14} />}
                   <span>{copied ? 'Copied to Clipboard!' : 'Copy'}</span>
                 </button>
               </div>
 
-              {/* Metadata details */}
+              {/* Location & GitHub */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
                   <span
                     style={{
                       width: '36px',
                       height: '36px',
                       borderRadius: '8px',
-                      background: 'rgba(255, 255, 255, 0.03)',
+                      background: 'var(--bg-subtle)',
+                      border: '1px solid var(--border-color)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      color: 'var(--text-muted)',
+                      color: 'var(--text-primary)',
                     }}
                   >
-                    <MapPin size={18} />
+                    <MapPin size={17} />
                   </span>
                   <div>
-                    <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>Location</div>
-                    <div style={{ fontSize: '0.94rem', color: 'var(--text-primary)' }}>
+                    <div style={{ fontSize: '0.76rem', color: 'var(--text-muted)' }}>Location</div>
+                    <div style={{ fontSize: '0.94rem', fontWeight: 500, color: 'var(--text-primary)' }}>
                       {portfolioData.personal.location}
                     </div>
                   </div>
                 </div>
 
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
                   <span
                     style={{
                       width: '36px',
                       height: '36px',
                       borderRadius: '8px',
-                      background: 'rgba(255, 255, 255, 0.03)',
+                      background: 'var(--bg-subtle)',
+                      border: '1px solid var(--border-color)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      color: 'var(--text-muted)',
+                      color: 'var(--text-primary)',
                     }}
                   >
-                    <GithubIcon size={18} />
+                    <GithubIcon size={17} />
                   </span>
                   <div>
-                    <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>GitHub Repository</div>
+                    <div style={{ fontSize: '0.76rem', color: 'var(--text-muted)' }}>GitHub Profile</div>
                     <a
                       href={portfolioData.personal.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      style={{ fontSize: '0.94rem', color: 'var(--accent-primary)', textDecoration: 'underline' }}
+                      style={{ fontSize: '0.94rem', fontWeight: 500, color: 'var(--text-primary)', textDecoration: 'underline' }}
                     >
                       github.com/minula2
                     </a>
@@ -193,23 +197,23 @@ export default function Contact() {
 
           {/* Right Column: Direct Message Form */}
           <div
-            className="glass-card"
+            className="portox-card"
             style={{
-              padding: '2.25rem',
+              padding: '2.5rem',
             }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.5rem' }}>
-              <MessageSquare size={20} color="var(--accent-cyan)" />
-              <h3 style={{ fontSize: '1.35rem' }}>Send a Message</h3>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '1.75rem' }}>
+              <MessageSquare size={20} color="var(--text-primary)" />
+              <h3 style={{ fontSize: '1.35rem', fontWeight: 700 }}>Send a Message</h3>
             </div>
 
             {submitted ? (
               <div
                 style={{
-                  padding: '2rem',
+                  padding: '2.5rem',
                   borderRadius: 'var(--radius-sm)',
-                  background: 'rgba(16, 185, 129, 0.08)',
-                  border: '1px solid rgba(16, 185, 129, 0.25)',
+                  background: 'var(--bg-subtle)',
+                  border: '1px solid var(--border-color)',
                   textAlign: 'center',
                 }}
               >
@@ -218,7 +222,7 @@ export default function Contact() {
                     width: '48px',
                     height: '48px',
                     borderRadius: '50%',
-                    background: 'rgba(16, 185, 129, 0.2)',
+                    background: 'rgba(22, 163, 74, 0.12)',
                     display: 'inline-flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -227,9 +231,11 @@ export default function Contact() {
                 >
                   <Check size={24} color="var(--accent-emerald)" />
                 </div>
-                <h4 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: '#ffffff' }}>Message Sent!</h4>
+                <h4 style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '0.4rem', color: 'var(--text-primary)' }}>
+                  Message Sent!
+                </h4>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
-                  Thank you for reaching out. I'll get back to you as soon as possible!
+                  Thank you for reaching out. I will respond to your email promptly!
                 </p>
               </div>
             ) : (
@@ -242,7 +248,7 @@ export default function Contact() {
                         fontSize: '0.84rem',
                         fontWeight: 600,
                         color: 'var(--text-secondary)',
-                        marginBottom: '0.4rem',
+                        marginBottom: '0.45rem',
                       }}
                     >
                       Your Name *
@@ -256,13 +262,16 @@ export default function Contact() {
                       style={{
                         width: '100%',
                         padding: '0.75rem 1rem',
-                        background: 'rgba(255, 255, 255, 0.03)',
+                        background: '#ffffff',
                         border: '1px solid var(--border-color)',
                         borderRadius: 'var(--radius-sm)',
-                        color: '#ffffff',
+                        color: 'var(--text-primary)',
                         fontSize: '0.95rem',
                         outline: 'none',
+                        transition: 'border-color 0.2s ease',
                       }}
+                      onFocus={(e) => (e.target.style.borderColor = 'var(--text-primary)')}
+                      onBlur={(e) => (e.target.style.borderColor = 'var(--border-color)')}
                     />
                   </div>
 
@@ -273,7 +282,7 @@ export default function Contact() {
                         fontSize: '0.84rem',
                         fontWeight: 600,
                         color: 'var(--text-secondary)',
-                        marginBottom: '0.4rem',
+                        marginBottom: '0.45rem',
                       }}
                     >
                       Your Email *
@@ -287,13 +296,16 @@ export default function Contact() {
                       style={{
                         width: '100%',
                         padding: '0.75rem 1rem',
-                        background: 'rgba(255, 255, 255, 0.03)',
+                        background: '#ffffff',
                         border: '1px solid var(--border-color)',
                         borderRadius: 'var(--radius-sm)',
-                        color: '#ffffff',
+                        color: 'var(--text-primary)',
                         fontSize: '0.95rem',
                         outline: 'none',
+                        transition: 'border-color 0.2s ease',
                       }}
+                      onFocus={(e) => (e.target.style.borderColor = 'var(--text-primary)')}
+                      onBlur={(e) => (e.target.style.borderColor = 'var(--border-color)')}
                     />
                   </div>
                 </div>
@@ -305,7 +317,7 @@ export default function Contact() {
                       fontSize: '0.84rem',
                       fontWeight: 600,
                       color: 'var(--text-secondary)',
-                      marginBottom: '0.4rem',
+                      marginBottom: '0.45rem',
                     }}
                   >
                     Subject
@@ -318,10 +330,10 @@ export default function Contact() {
                     style={{
                       width: '100%',
                       padding: '0.75rem 1rem',
-                      background: 'rgba(255, 255, 255, 0.03)',
+                      background: '#ffffff',
                       border: '1px solid var(--border-color)',
                       borderRadius: 'var(--radius-sm)',
-                      color: '#ffffff',
+                      color: 'var(--text-primary)',
                       fontSize: '0.95rem',
                       outline: 'none',
                     }}
@@ -335,7 +347,7 @@ export default function Contact() {
                       fontSize: '0.84rem',
                       fontWeight: 600,
                       color: 'var(--text-secondary)',
-                      marginBottom: '0.4rem',
+                      marginBottom: '0.45rem',
                     }}
                   >
                     Message *
@@ -343,16 +355,16 @@ export default function Contact() {
                   <textarea
                     required
                     rows={4}
-                    placeholder="Hi Minula, we came across your portfolio and would like to invite you for an internship interview..."
+                    placeholder="Hi Minula, we reviewed your university projects and would like to discuss an internship opportunity with you..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     style={{
                       width: '100%',
                       padding: '0.75rem 1rem',
-                      background: 'rgba(255, 255, 255, 0.03)',
+                      background: '#ffffff',
                       border: '1px solid var(--border-color)',
                       borderRadius: 'var(--radius-sm)',
-                      color: '#ffffff',
+                      color: 'var(--text-primary)',
                       fontSize: '0.95rem',
                       outline: 'none',
                       resize: 'vertical',
@@ -370,8 +382,8 @@ export default function Contact() {
                     opacity: isSubmitting ? 0.7 : 1,
                   }}
                 >
-                  <Send size={16} />
-                  <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
+                  <Send size={15} />
+                  <span>{isSubmitting ? 'Sending...' : 'Send Inquiry'}</span>
                 </button>
               </form>
             )}

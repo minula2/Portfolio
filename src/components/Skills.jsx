@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Cpu, Code2, Server, Database, Wrench, CheckCircle2 } from 'lucide-react';
+import { Cpu, Code2, Server, Database, Wrench, CheckCircle } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
 export default function Skills() {
@@ -10,7 +10,7 @@ export default function Skills() {
     { id: 'frontend', label: 'Frontend', icon: <Code2 size={16} /> },
     { id: 'backend', label: 'Backend & APIs', icon: <Server size={16} /> },
     { id: 'database', label: 'Databases', icon: <Database size={16} /> },
-    { id: 'devops', label: 'DevOps & Tools', icon: <Wrench size={16} /> },
+    { id: 'devops', label: 'Testing & DevOps', icon: <Wrench size={16} /> },
   ];
 
   const getFilteredCategories = () => {
@@ -23,32 +23,32 @@ export default function Skills() {
   const getCategoryIcon = (id) => {
     switch (id) {
       case 'frontend':
-        return <Code2 size={20} color="var(--accent-primary)" />;
+        return <Code2 size={20} color="var(--text-primary)" />;
       case 'backend':
-        return <Server size={20} color="var(--accent-cyan)" />;
+        return <Server size={20} color="var(--text-primary)" />;
       case 'database':
-        return <Database size={20} color="var(--accent-purple)" />;
+        return <Database size={20} color="var(--text-primary)" />;
       case 'devops':
-        return <Wrench size={20} color="var(--accent-emerald)" />;
+        return <Wrench size={20} color="var(--text-primary)" />;
       default:
-        return <Cpu size={20} color="var(--accent-primary)" />;
+        return <Cpu size={20} color="var(--text-primary)" />;
     }
   };
 
   return (
-    <section id="skills" className="section-wrapper" style={{ background: 'rgba(11, 17, 33, 0.4)' }}>
+    <section id="skills" className="section-wrapper">
       <div className="container">
         {/* Section Header */}
         <div className="section-header">
           <span className="section-badge">
-            <Cpu size={15} />
+            <Cpu size={14} />
             <span>Skills & Tooling</span>
           </span>
           <h2 className="section-title">
-            Modern Full-Stack <span className="text-gradient">Tech Stack</span>
+            Technologies & <span style={{ color: 'var(--text-secondary)' }}>Developer Tools</span>
           </h2>
           <p className="section-subtitle">
-            Technologies and frameworks I have hands-on experience building with across projects and coursework.
+            Languages, frameworks, databases, and testing environments I have hands-on experience building with across university modules and personal projects.
           </p>
         </div>
 
@@ -71,16 +71,17 @@ export default function Skills() {
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '0.5rem',
-                padding: '0.55rem 1.15rem',
+                padding: '0.55rem 1.25rem',
                 borderRadius: 'var(--radius-full)',
-                fontSize: '0.9rem',
+                fontSize: '0.88rem',
                 fontWeight: 600,
                 cursor: 'pointer',
                 transition: 'all 0.2s ease',
                 border: '1px solid',
-                borderColor: selectedCategory === cat.id ? 'var(--accent-primary)' : 'var(--border-color)',
-                background: selectedCategory === cat.id ? 'rgba(99, 102, 241, 0.18)' : 'rgba(255, 255, 255, 0.03)',
+                borderColor: selectedCategory === cat.id ? '#09090b' : 'var(--border-color)',
+                background: selectedCategory === cat.id ? '#09090b' : '#ffffff',
                 color: selectedCategory === cat.id ? '#ffffff' : 'var(--text-secondary)',
+                boxShadow: 'var(--shadow-sm)',
               }}
             >
               {cat.icon}
@@ -89,14 +90,14 @@ export default function Skills() {
           ))}
         </div>
 
-        {/* Skills Grid by Category */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
+        {/* Categories Grouping */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
           {getFilteredCategories().map((cat) => (
             <div
               key={cat.id}
-              className="glass-card"
+              className="portox-card"
               style={{
-                padding: '2rem',
+                padding: '2.25rem',
               }}
             >
               {/* Category Header */}
@@ -107,18 +108,19 @@ export default function Skills() {
                   justifyContent: 'space-between',
                   flexWrap: 'wrap',
                   gap: '1rem',
-                  marginBottom: '1.5rem',
-                  paddingBottom: '1rem',
-                  borderBottom: '1px solid var(--border-color)',
+                  marginBottom: '1.75rem',
+                  paddingBottom: '1.25rem',
+                  borderBottom: '1px solid var(--border-subtle)',
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
                   <span
                     style={{
                       width: '40px',
                       height: '40px',
                       borderRadius: '10px',
-                      background: 'rgba(255, 255, 255, 0.05)',
+                      background: 'var(--bg-subtle)',
+                      border: '1px solid var(--border-color)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -127,21 +129,23 @@ export default function Skills() {
                     {getCategoryIcon(cat.id)}
                   </span>
                   <div>
-                    <h3 style={{ fontSize: '1.25rem' }}>{cat.name}</h3>
-                    <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>{cat.description}</p>
+                    <h3 style={{ fontSize: '1.25rem', fontWeight: 700 }}>{cat.name}</h3>
+                    <p style={{ fontSize: '0.86rem', color: 'var(--text-muted)' }}>{cat.description}</p>
                   </div>
                 </div>
 
                 <span
                   style={{
                     fontSize: '0.8rem',
+                    fontWeight: 500,
                     color: 'var(--text-muted)',
-                    background: 'rgba(255, 255, 255, 0.04)',
-                    padding: '0.25rem 0.75rem',
+                    background: 'var(--bg-subtle)',
+                    padding: '0.25rem 0.8rem',
                     borderRadius: 'var(--radius-full)',
+                    border: '1px solid var(--border-color)',
                   }}
                 >
-                  {cat.items.length} Technologies
+                  {cat.items.length} Competencies
                 </span>
               </div>
 
@@ -157,28 +161,28 @@ export default function Skills() {
                   <div
                     key={index}
                     style={{
-                      padding: '1rem',
+                      padding: '1rem 1.15rem',
                       borderRadius: 'var(--radius-sm)',
-                      background: 'rgba(255, 255, 255, 0.02)',
-                      border: '1px solid rgba(255, 255, 255, 0.06)',
+                      background: 'var(--bg-subtle)',
+                      border: '1px solid var(--border-color)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'space-between',
                       transition: 'all 0.2s ease',
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.borderColor = 'var(--accent-primary)';
-                      e.currentTarget.style.background = 'rgba(99, 102, 241, 0.06)';
-                      e.currentTarget.style.transform = 'translateY(-2px)';
+                      e.currentTarget.style.borderColor = 'var(--border-hover)';
+                      e.currentTarget.style.background = '#ffffff';
+                      e.currentTarget.style.transform = 'translateY(-1px)';
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.06)';
-                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.02)';
+                      e.currentTarget.style.borderColor = 'var(--border-color)';
+                      e.currentTarget.style.background = 'var(--bg-subtle)';
                       e.currentTarget.style.transform = 'translateY(0)';
                     }}
                   >
                     <div>
-                      <div style={{ fontWeight: 600, fontSize: '0.96rem', color: 'var(--text-primary)' }}>
+                      <div style={{ fontWeight: 600, fontSize: '0.94rem', color: 'var(--text-primary)' }}>
                         {skill.name}
                       </div>
                       <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: '0.15rem' }}>
@@ -194,12 +198,12 @@ export default function Skills() {
                         borderRadius: 'var(--radius-full)',
                         background:
                           skill.level === 'Advanced' || skill.level === 'Expert'
-                            ? 'rgba(16, 185, 129, 0.12)'
-                            : 'rgba(99, 102, 241, 0.12)',
+                            ? 'rgba(22, 163, 74, 0.1)'
+                            : 'rgba(9, 9, 11, 0.06)',
                         color:
                           skill.level === 'Advanced' || skill.level === 'Expert'
                             ? 'var(--accent-emerald)'
-                            : 'var(--accent-primary)',
+                            : 'var(--text-secondary)',
                       }}
                     >
                       {skill.level}

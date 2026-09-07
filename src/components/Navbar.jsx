@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Terminal, Menu, X, ArrowUpRight } from 'lucide-react';
+import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { GithubIcon } from './Icons';
 import { portfolioData } from '../data/portfolioData';
 
@@ -34,56 +34,51 @@ export default function Navbar() {
         zIndex: 100,
         transition: 'all 0.3s ease',
         background: isScrolled
-          ? 'rgba(7, 10, 19, 0.88)'
-          : 'rgba(7, 10, 19, 0.4)',
+          ? 'rgba(255, 255, 255, 0.92)'
+          : 'rgba(252, 252, 253, 0.75)',
         backdropFilter: 'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)',
         borderBottom: isScrolled
-          ? '1px solid rgba(255, 255, 255, 0.08)'
+          ? '1px solid var(--border-color)'
           : '1px solid transparent',
-        padding: isScrolled ? '0.75rem 0' : '1.25rem 0',
+        padding: isScrolled ? '0.85rem 0' : '1.3rem 0',
       }}
     >
       <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        {/* Brand Logo */}
+        {/* Brand Monogram */}
         <a
           href="#"
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '0.6rem',
-            textDecoration: 'none',
+            gap: '0.65rem',
             fontFamily: 'var(--font-heading)',
-            fontSize: '1.25rem',
+            fontSize: '1.2rem',
             fontWeight: 700,
             color: 'var(--text-primary)',
           }}
         >
-          <span
+          <img
+            src={portfolioData.personal.avatar}
+            alt={portfolioData.personal.name}
             style={{
-              width: '36px',
-              height: '36px',
-              borderRadius: '10px',
-              background: 'linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-cyan) 100%)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: '#ffffff',
-              boxShadow: '0 4px 12px var(--accent-glow)',
+              width: '34px',
+              height: '34px',
+              borderRadius: '50%',
+              objectFit: 'cover',
+              border: '1.5px solid var(--border-color)',
             }}
-          >
-            <Terminal size={18} strokeWidth={2.5} />
-          </span>
+          />
           <span>{portfolioData.personal.name}</span>
-          <span style={{ color: 'var(--accent-primary)', marginLeft: '-2px' }}>.dev</span>
+          <span style={{ fontSize: '0.85rem', fontWeight: 500, color: 'var(--text-muted)' }}>/ dev</span>
         </a>
 
-        {/* Desktop Navigation Links */}
+        {/* Desktop Nav Links */}
         <nav
           style={{
             display: 'none',
             alignItems: 'center',
-            gap: '1.75rem',
+            gap: '1.85rem',
           }}
           className="desktop-nav"
         >
@@ -92,11 +87,10 @@ export default function Navbar() {
               key={item.label}
               href={item.href}
               style={{
-                fontSize: '0.92rem',
+                fontSize: '0.9rem',
                 fontWeight: 500,
                 color: 'var(--text-secondary)',
                 transition: 'color 0.2s ease',
-                position: 'relative',
               }}
               onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--text-primary)')}
               onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-secondary)')}
@@ -107,7 +101,7 @@ export default function Navbar() {
         </nav>
 
         {/* Action Controls */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
           <a
             href={portfolioData.personal.github}
             target="_blank"
@@ -116,49 +110,47 @@ export default function Navbar() {
             style={{
               width: '38px',
               height: '38px',
-              borderRadius: 'var(--radius-sm)',
-              background: 'rgba(255, 255, 255, 0.05)',
+              borderRadius: 'var(--radius-full)',
+              background: '#ffffff',
               border: '1px solid var(--border-color)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: 'var(--text-secondary)',
+              color: 'var(--text-primary)',
               transition: 'all 0.2s ease',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.color = 'var(--text-primary)';
-              e.currentTarget.style.borderColor = 'var(--accent-primary)';
+              e.currentTarget.style.borderColor = 'var(--text-primary)';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.color = 'var(--text-secondary)';
               e.currentTarget.style.borderColor = 'var(--border-color)';
             }}
           >
-            <GithubIcon size={18} />
+            <GithubIcon size={17} />
           </a>
 
           <a
             href="#contact"
             className="btn btn-primary nav-cta-btn"
             style={{
-              padding: '0.55rem 1.1rem',
-              fontSize: '0.88rem',
+              padding: '0.55rem 1.15rem',
+              fontSize: '0.85rem',
             }}
           >
-            <span>Let's Talk</span>
+            <span>Get in Touch</span>
             <ArrowUpRight size={15} />
           </a>
 
-          {/* Mobile Menu Toggle Button */}
+          {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle Navigation Menu"
             style={{
               display: 'none',
-              width: '40px',
-              height: '40px',
-              borderRadius: 'var(--radius-sm)',
-              background: 'rgba(255, 255, 255, 0.05)',
+              width: '38px',
+              height: '38px',
+              borderRadius: 'var(--radius-full)',
+              background: '#ffffff',
               border: '1px solid var(--border-color)',
               color: 'var(--text-primary)',
               alignItems: 'center',
@@ -167,12 +159,12 @@ export default function Navbar() {
             }}
             className="mobile-nav-toggle"
           >
-            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
         <div
           style={{
@@ -180,10 +172,9 @@ export default function Navbar() {
             top: '100%',
             left: 0,
             right: 0,
-            background: 'rgba(7, 10, 19, 0.98)',
-            backdropFilter: 'blur(20px)',
-            WebkitBackdropFilter: 'blur(20px)',
+            background: '#ffffff',
             borderBottom: '1px solid var(--border-color)',
+            boxShadow: 'var(--shadow-md)',
             padding: '1.5rem',
             display: 'flex',
             flexDirection: 'column',
@@ -196,11 +187,11 @@ export default function Navbar() {
               href={item.href}
               onClick={() => setMobileMenuOpen(false)}
               style={{
-                fontSize: '1.05rem',
+                fontSize: '1rem',
                 fontWeight: 500,
                 color: 'var(--text-primary)',
-                padding: '0.6rem 0',
-                borderBottom: '1px solid rgba(255, 255, 255, 0.04)',
+                padding: '0.5rem 0',
+                borderBottom: '1px solid var(--border-subtle)',
               }}
             >
               {item.label}

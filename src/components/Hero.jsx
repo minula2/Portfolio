@@ -24,7 +24,7 @@ export default function Hero() {
           className="hero-grid"
         >
           {/* Left Column: Bio & Value Proposition */}
-          <div>
+          <div className="animate-fade-up">
             {/* Live Availability Pill */}
             <div
               style={{
@@ -134,7 +134,7 @@ export default function Hero() {
           </div>
 
           {/* Right Column: User Portrait Frame (Portox Editorial Style) */}
-          <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <div className="animate-fade-in delay-2" style={{ display: 'flex', justifyContent: 'center' }}>
             <div
               style={{
                 position: 'relative',

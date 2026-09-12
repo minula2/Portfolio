@@ -41,7 +41,7 @@ export default function About() {
         >
           {/* Left Column: Narrative Bio */}
           <div
-            className="portox-card"
+            className="portox-card animate-fade-up"
             style={{
               padding: '2.5rem',
             }}
@@ -102,6 +102,7 @@ export default function About() {
 
           {/* Right Column: 4 Pillar Highlight Cards */}
           <div
+            className="animate-fade-up delay-2"
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',

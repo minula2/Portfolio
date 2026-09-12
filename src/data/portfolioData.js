@@ -11,7 +11,11 @@ export const portfolioData = {
     repoUrl: "https://github.com/minula2/Portfolio",
     linkedin: "https://linkedin.com/in/minula",
     location: "Colombo, Sri Lanka",
+<<<<<<< HEAD
     bio: "Undergraduate BSc (Hons) in Information Technology student passionate about crafting performant full-stack systems, clean RESTful APIs, and intuitive user experiences. Driven to learn fast and contribute to high-impact teams.",
+=======
+    bio: "Undergraduate Information Technology student passionate about crafting performant full-stack systems, clean RESTful APIs, and intuitive user experiences. Driven to learn fast and contribute to high-impact teams.",
+>>>>>>> b7f4da01daf004ca3f2c34ea7c9e0f6b1bd7f091
     quickStats: [
       { label: "Status", value: "Undergraduate (Yr 3)" },
       { label: "Specialization", value: "Information Technology" },
@@ -23,9 +27,15 @@ export const portfolioData = {
   about: {
     headline: "Undergraduate Information Technology student passionate about building scalable web applications and clean code architectures.",
     paragraphs: [
+<<<<<<< HEAD
       "I am an undergraduate student currently pursuing a BSc (Hons) in Information Technology, specializing in Information Technology. My passion lies in crafting end-to-end web applications that combine intuitive, responsive user interfaces with resilient, well-documented backend services.",
       "Through university coursework and collaborative IT assignments, I have built practical experience working across the complete software development lifecycle — from database schema design and RESTful API architecture to automated testing with Playwright and modern frontend development.",
       "I am actively seeking an Information Technology / Full-Stack Developer internship where I can collaborate with experienced mentors, solve real-world problems, and deliver meaningful software."
+=======
+      "I am an undergraduate student currently specializing in Information Technology. My passion lies in crafting end-to-end web applications that combine intuitive, responsive user interfaces with resilient, well-documented backend services.",
+      "Through university coursework and collaborative engineering assignments, I have built practical experience working across the complete software development lifecycle — from database schema design and RESTful API architecture to automated testing with Playwright and modern frontend development.",
+      "I am actively seeking a Information Technology / Full-Stack Developer internship where I can collaborate with experienced mentors, solve real-world problems, and deliver meaningful software."
+>>>>>>> b7f4da01daf004ca3f2c34ea7c9e0f6b1bd7f091
     ],
     highlights: [
       {
@@ -119,6 +129,7 @@ export const portfolioData = {
       tags: ["React", "Node.js", "Express", "MongoDB", "REST APIs", "PAF 2026"],
       githubUrl: "https://github.com/minindumadhawa/it3030-paf-2026-smart-campus-group47",
       liveDemo: "https://github.com/minindumadhawa/it3030-paf-2026-smart-campus-group47",
+      image: "/smart-campus.png",
       accent: "blue"
     },
     {
@@ -129,12 +140,13 @@ export const portfolioData = {
       summary: "An interactive guidance web application designed to help undergraduate students explore career specializations, track skill requirements, and map learning paths.",
       keyFeatures: [
         "Modular JavaScript & React frontend with responsive path navigation.",
-        "Structured catalog of industry software engineering roles and prerequisite tech stacks.",
+        "Structured catalog of industry information technology roles and prerequisite tech stacks.",
         "Clean component hierarchy with persistent state and bookmarking."
       ],
       tags: ["JavaScript", "React", "Node.js", "UI/UX", "Career Guidance"],
       githubUrl: "https://github.com/minula2/CareerPath",
       liveDemo: "https://github.com/minula2/CareerPath",
+      image: "/careerpath.png",
       accent: "lime"
     },
     {
@@ -151,6 +163,7 @@ export const portfolioData = {
       tags: ["MongoDB", "Express.js", "React.js", "Node.js", "REST APIs"],
       githubUrl: "https://github.com/minula2/MERN_CRUD",
       liveDemo: "https://github.com/minula2/MERN_CRUD",
+      image: "/mern-crud.png",
       accent: "emerald"
     },
     {
@@ -167,6 +180,7 @@ export const portfolioData = {
       tags: ["Playwright", "JavaScript", "Automation Testing", "E2E", "ITPM"],
       githubUrl: "https://github.com/minula2/singlish-playwright-itpm",
       liveDemo: "https://github.com/minula2/singlish-playwright-itpm",
+      image: "/singlish-playwright.png",
       accent: "purple"
     },
     {
@@ -183,6 +197,7 @@ export const portfolioData = {
       tags: ["React", "JavaScript", "HCI Principles", "UI/UX Design", "Heuristic Analysis"],
       githubUrl: "https://github.com/minula2/Portfolio",
       liveDemo: "https://github.com/minula2/Portfolio",
+      image: "/fitflow-tracker.png",
       accent: "dark"
     }
   ],
@@ -231,7 +246,11 @@ export const portfolioData = {
       responsibilities: [
         "Developed multiple full-stack applications (CareerPath, MERN CRUD, FitFlow) to deepen practical software skills.",
         "Engineered automated test suites using Playwright for regression and end-to-end verification.",
+<<<<<<< HEAD
         "Actively seeking an internship opportunity to apply my skills to real production IT and development challenges."
+=======
+        "Actively seeking an internship opportunity to apply my skills to real production information technology challenges."
+>>>>>>> b7f4da01daf004ca3f2c34ea7c9e0f6b1bd7f091
       ]
     }
   ]

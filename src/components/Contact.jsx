@@ -47,16 +47,6 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-<<<<<<< HEAD
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitted(true);
-      setFormData({
-        name: '',
-        email: '',
-        subject: 'Internship Opportunity / IT & Full-Stack Inquiry',
-        message: '',
-=======
     setErrorMessage('');
 
     try {
@@ -74,7 +64,6 @@ export default function Contact() {
           _subject: `Portfolio Message from ${formData.name}: ${formData.subject}`,
           _template: 'table',
         }),
->>>>>>> b7f4da01daf004ca3f2c34ea7c9e0f6b1bd7f091
       });
 
       const result = await response.json();
@@ -113,11 +102,7 @@ export default function Contact() {
             Let's Connect for <span style={{ color: 'var(--text-secondary)' }}>Internship Opportunities</span>
           </h2>
           <p className="section-subtitle">
-<<<<<<< HEAD
-            I am actively seeking Information Technology & Full - Stack Developer internship roles.Feel free to reach out directly or send a message below!
-=======
             Have an internship opening or want to discuss full-stack projects? Send a message directly to my Gmail inbox or connect via GitHub!
->>>>>>> b7f4da01daf004ca3f2c34ea7c9e0f6b1bd7f091
           </p >
         </div >
 

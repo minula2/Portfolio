@@ -11,11 +11,7 @@ export const portfolioData = {
     repoUrl: "https://github.com/minula2/Portfolio",
     linkedin: "https://linkedin.com/in/minula",
     location: "Colombo, Sri Lanka",
-<<<<<<< HEAD
     bio: "Undergraduate BSc (Hons) in Information Technology student passionate about crafting performant full-stack systems, clean RESTful APIs, and intuitive user experiences. Driven to learn fast and contribute to high-impact teams.",
-=======
-    bio: "Undergraduate Information Technology student passionate about crafting performant full-stack systems, clean RESTful APIs, and intuitive user experiences. Driven to learn fast and contribute to high-impact teams.",
->>>>>>> b7f4da01daf004ca3f2c34ea7c9e0f6b1bd7f091
     quickStats: [
       { label: "Status", value: "Undergraduate (Yr 3)" },
       { label: "Specialization", value: "Information Technology" },
@@ -27,15 +23,9 @@ export const portfolioData = {
   about: {
     headline: "Undergraduate Information Technology student passionate about building scalable web applications and clean code architectures.",
     paragraphs: [
-<<<<<<< HEAD
-      "I am an undergraduate student currently pursuing a BSc (Hons) in Information Technology, specializing in Information Technology. My passion lies in crafting end-to-end web applications that combine intuitive, responsive user interfaces with resilient, well-documented backend services.",
-      "Through university coursework and collaborative IT assignments, I have built practical experience working across the complete software development lifecycle — from database schema design and RESTful API architecture to automated testing with Playwright and modern frontend development.",
-      "I am actively seeking an Information Technology / Full-Stack Developer internship where I can collaborate with experienced mentors, solve real-world problems, and deliver meaningful software."
-=======
-      "I am an undergraduate student currently specializing in Information Technology. My passion lies in crafting end-to-end web applications that combine intuitive, responsive user interfaces with resilient, well-documented backend services.",
+      "I am an undergraduate student currently pursuing a BSc (Hons) in Information Technology. My passion lies in crafting end-to-end web applications that combine intuitive, responsive user interfaces with resilient, well-documented backend services.",
       "Through university coursework and collaborative engineering assignments, I have built practical experience working across the complete software development lifecycle — from database schema design and RESTful API architecture to automated testing with Playwright and modern frontend development.",
-      "I am actively seeking a Information Technology / Full-Stack Developer internship where I can collaborate with experienced mentors, solve real-world problems, and deliver meaningful software."
->>>>>>> b7f4da01daf004ca3f2c34ea7c9e0f6b1bd7f091
+      "I am actively seeking an Information Technology / Full-Stack Developer internship where I can collaborate with experienced mentors, solve real-world problems, and deliver meaningful software."
     ],
     highlights: [
       {
@@ -246,11 +236,7 @@ export const portfolioData = {
       responsibilities: [
         "Developed multiple full-stack applications (CareerPath, MERN CRUD, FitFlow) to deepen practical software skills.",
         "Engineered automated test suites using Playwright for regression and end-to-end verification.",
-<<<<<<< HEAD
         "Actively seeking an internship opportunity to apply my skills to real production IT and development challenges."
-=======
-        "Actively seeking an internship opportunity to apply my skills to real production information technology challenges."
->>>>>>> b7f4da01daf004ca3f2c34ea7c9e0f6b1bd7f091
       ]
     }
   ]

@@ -1,10 +1,11 @@
 import React from 'react';
 import { Briefcase, Calendar, CheckCircle2, Laptop } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
+import AnimatedSection from './AnimatedSection';
 
 export default function Experience() {
   return (
-    <section id="experience" className="section-wrapper" style={{ background: '#ffffff', borderTop: '1px solid var(--border-color)', borderBottom: '1px solid var(--border-color)' }}>
+    <AnimatedSection id="experience" className="section-wrapper" style={{ background: '#ffffff', borderTop: '1px solid var(--border-color)', borderBottom: '1px solid var(--border-color)' }}>
       <div className="container">
         {/* Section Header */}
         <div className="section-header">
@@ -109,6 +110,6 @@ export default function Experience() {
           ))}
         </div>
       </div>
-    </section>
+    </AnimatedSection>
   );
 }

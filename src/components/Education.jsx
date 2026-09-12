@@ -1,10 +1,11 @@
 import React from 'react';
 import { GraduationCap, Calendar, BookOpen, CheckCircle } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
+import AnimatedSection from './AnimatedSection';
 
 export default function Education() {
   return (
-    <section id="education" className="section-wrapper">
+    <AnimatedSection id="education" className="section-wrapper">
       <div className="container">
         {/* Section Header */}
         <div className="section-header">
@@ -151,6 +152,6 @@ export default function Education() {
           ))}
         </div>
       </div>
-    </section>
+    </AnimatedSection>
   );
 }

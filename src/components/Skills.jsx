@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Cpu, Code2, Server, Database, Wrench, CheckCircle } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
+import AnimatedSection from './AnimatedSection';
 
 export default function Skills() {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -36,7 +37,7 @@ export default function Skills() {
   };
 
   return (
-    <section id="skills" className="section-wrapper">
+    <AnimatedSection id="skills" className="section-wrapper">
       <div className="container">
         {/* Section Header */}
         <div className="section-header">
@@ -215,6 +216,6 @@ export default function Skills() {
           ))}
         </div>
       </div>
-    </section>
+    </AnimatedSection>
   );
 }

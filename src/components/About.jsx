@@ -1,6 +1,7 @@
 import React from 'react';
 import { UserCheck, Layers, GitBranch, CheckCircle2, Award, BookOpen, ShieldCheck, Zap } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
+import AnimatedSection from './AnimatedSection';
 
 export default function About() {
   const highlightIcons = [
@@ -11,7 +12,7 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="section-wrapper" style={{ background: '#ffffff', borderTop: '1px solid var(--border-color)', borderBottom: '1px solid var(--border-color)' }}>
+    <AnimatedSection id="about" className="section-wrapper" style={{ background: '#ffffff', borderTop: '1px solid var(--border-color)', borderBottom: '1px solid var(--border-color)' }}>
       <div className="container">
         {/* Section Header */}
         <div className="section-header">
@@ -63,7 +64,7 @@ export default function About() {
               <div>
                 <h3 style={{ fontSize: '1.35rem', fontWeight: 700 }}>Background & Journey</h3>
                 <p style={{ fontSize: '0.84rem', color: 'var(--text-muted)' }}>
-                  BSc (Hons) in Software Engineering • Undergraduate
+                  BSc (Hons) in Information Technology • Undergraduate
                 </p>
               </div>
             </div>
@@ -149,6 +150,6 @@ export default function About() {
           }
         }
       `}</style>
-    </section>
+    </AnimatedSection>
   );
 }

@@ -2,10 +2,11 @@ import React from 'react';
 import { FolderGit2, ExternalLink, CheckCircle2, Code2, Terminal, ArrowUpRight } from 'lucide-react';
 import { GithubIcon } from './Icons';
 import { portfolioData } from '../data/portfolioData';
+import AnimatedSection from './AnimatedSection';
 
 export default function Projects() {
   return (
-    <section id="projects" className="section-wrapper" style={{ background: '#ffffff', borderTop: '1px solid var(--border-color)', borderBottom: '1px solid var(--border-color)' }}>
+    <AnimatedSection id="projects" className="section-wrapper" style={{ background: '#ffffff', borderTop: '1px solid var(--border-color)', borderBottom: '1px solid var(--border-color)' }}>
       <div className="container">
         {/* Section Header */}
         <div className="section-header">
@@ -17,7 +18,7 @@ export default function Projects() {
             Featured <span style={{ color: 'var(--text-secondary)' }}>Academic & Practical Work</span>
           </h2>
           <p className="section-subtitle">
-            Real software engineering projects, automated testing frameworks, and full-stack applications completed throughout my university degree.
+            Real IT and development projects, automated testing frameworks, and full-stack applications completed throughout my university degree.
           </p>
         </div>
 
@@ -255,6 +256,6 @@ export default function Projects() {
           ))}
         </div>
       </div>
-    </section>
+    </AnimatedSection>
   );
 }

@@ -1,8 +1,20 @@
 {
   "name": "portfolio",
-  "private": true,
   "version": "0.0.0",
+  "private": true,
+  "description": "> Modern, high-performance portfolio tailored for Software Engineering & Full-Stack Developer internship applications. Built with **React 19**, **Vite**, and **Vanilla CSS**.",
+  "homepage": "https://github.com/minula2/Portfolio#readme",
+  "bugs": {
+    "url": "https://github.com/minula2/Portfolio/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/minula2/Portfolio.git"
+  },
+  "license": "ISC",
+  "author": "",
   "type": "module",
+  "main": "vite.config.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -10,6 +22,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "framer-motion": "^12.23.24",
     "lucide-react": "^1.41.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8"

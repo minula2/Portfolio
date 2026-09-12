@@ -3,29 +3,29 @@ export const portfolioData = {
     name: "Minula",
     fullName: "Minula",
     role: "Full-Stack Developer",
-    status: "Seeking Software Engineering / Full-Stack Internship",
+    status: "Seeking Information Technology / Full-Stack Internship",
     availability: "Available for Immediate / Summer Internship",
     avatar: "/profile.jpg",
-    email: "minularox@gmail.com",
+    email: "minulasavindu2002@gmail.com",
     github: "https://github.com/minula2",
     repoUrl: "https://github.com/minula2/Portfolio",
     linkedin: "https://linkedin.com/in/minula",
     location: "Colombo, Sri Lanka",
-    bio: "Undergraduate Software Engineering student passionate about crafting performant full-stack systems, clean RESTful APIs, and intuitive user experiences. Driven to learn fast and contribute to high-impact teams.",
+    bio: "Undergraduate BSc (Hons) in Information Technology student passionate about crafting performant full-stack systems, clean RESTful APIs, and intuitive user experiences. Driven to learn fast and contribute to high-impact teams.",
     quickStats: [
       { label: "Status", value: "Undergraduate (Yr 3)" },
-      { label: "Specialization", value: "Software Engineering" },
+      { label: "Specialization", value: "Information Technology" },
       { label: "Completed Projects", value: "8+ Projects" },
       { label: "Core Stack", value: "React • Node • MERN" }
     ]
   },
-  
+
   about: {
-    headline: "Undergraduate engineer passionate about building scalable web applications and clean code architectures.",
+    headline: "Undergraduate Information Technology student passionate about building scalable web applications and clean code architectures.",
     paragraphs: [
-      "I am an undergraduate student currently specializing in Software Engineering. My passion lies in crafting end-to-end web applications that combine intuitive, responsive user interfaces with resilient, well-documented backend services.",
-      "Through university coursework and collaborative engineering assignments, I have built practical experience working across the complete software development lifecycle — from database schema design and RESTful API architecture to automated testing with Playwright and modern frontend development.",
-      "I am actively seeking a Software Engineering / Full-Stack Developer internship where I can collaborate with experienced mentors, solve real-world problems, and deliver meaningful software."
+      "I am an undergraduate student currently pursuing a BSc (Hons) in Information Technology, specializing in Information Technology. My passion lies in crafting end-to-end web applications that combine intuitive, responsive user interfaces with resilient, well-documented backend services.",
+      "Through university coursework and collaborative IT assignments, I have built practical experience working across the complete software development lifecycle — from database schema design and RESTful API architecture to automated testing with Playwright and modern frontend development.",
+      "I am actively seeking an Information Technology / Full-Stack Developer internship where I can collaborate with experienced mentors, solve real-world problems, and deliver meaningful software."
     ],
     highlights: [
       {
@@ -189,7 +189,7 @@ export const portfolioData = {
 
   education: [
     {
-      degree: "BSc (Hons) in Information Technology / Software Engineering",
+      degree: "BSc (Hons) in Information Technology",
       institution: "Faculty of Computing",
       status: "Undergraduate Student (Year 3)",
       period: "2023 - Present",
@@ -207,15 +207,7 @@ export const portfolioData = {
         "Strong foundation in algorithmic problem-solving and clean architectural patterns."
       ]
     },
-    {
-      degree: "G.C.E. Advanced Level (A/L) - Physical Science Stream",
-      institution: "Secondary Education",
-      status: "Completed",
-      period: "Graduated",
-      description: "Completed rigorous physical science curriculum developing logical deduction and mathematical problem-solving skills.",
-      coursework: ["Combined Mathematics", "Physics", "Chemistry"],
-      highlights: ["Strong foundation in logical reasoning and analytical thinking."]
-    }
+
   ],
 
   experience: [
@@ -225,21 +217,21 @@ export const portfolioData = {
       period: "2024 - 2026",
       type: "Academic & Practical Experience",
       responsibilities: [
-        "Collaborated with student engineers to build an integrated campus management platform using React and Node.js.",
+        "Collaborated with student developers to build an integrated campus management platform using React and Node.js.",
         "Implemented RESTful endpoints and integrated database persistence with MongoDB.",
         "Established team Git collaboration workflow (branch naming, pull requests, and code merges).",
         "Participated in sprint standups, feature demonstrations, and academic milestone evaluations."
       ]
     },
     {
-      role: "Undergraduate Software Engineering Student & Builder",
+      role: "Undergraduate Information Technology Student & Builder",
       organization: "Personal & Academic Development",
       period: "2023 - Present",
       type: "Continuous Learning",
       responsibilities: [
         "Developed multiple full-stack applications (CareerPath, MERN CRUD, FitFlow) to deepen practical software skills.",
         "Engineered automated test suites using Playwright for regression and end-to-end verification.",
-        "Actively seeking an internship opportunity to apply my skills to real production software engineering challenges."
+        "Actively seeking an internship opportunity to apply my skills to real production IT and development challenges."
       ]
     }
   ]

@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { Mail, Copy, Check, MapPin, Send, MessageSquare } from 'lucide-react';
 import { GithubIcon } from './Icons';
 import { portfolioData } from '../data/portfolioData';
+import AnimatedSection from './AnimatedSection';
 
 export default function Contact() {
   const [copied, setCopied] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    subject: 'Internship Opportunity / Software Engineering Inquiry',
+    subject: 'Internship Opportunity / IT & Full-Stack Inquiry',
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -29,7 +30,7 @@ export default function Contact() {
       setFormData({
         name: '',
         email: '',
-        subject: 'Internship Opportunity / Software Engineering Inquiry',
+        subject: 'Internship Opportunity / IT & Full-Stack Inquiry',
         message: '',
       });
       setTimeout(() => setSubmitted(false), 5000);
@@ -37,7 +38,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="section-wrapper">
+    <AnimatedSection id="contact" className="section-wrapper">
       <div className="container">
         {/* Section Header */}
         <div className="section-header">
@@ -49,7 +50,7 @@ export default function Contact() {
             Let's Connect for <span style={{ color: 'var(--text-secondary)' }}>Internship Opportunities</span>
           </h2>
           <p className="section-subtitle">
-            I am actively seeking Software Engineering & Full-Stack Developer internship roles. Feel free to reach out directly or send a message below!
+            I am actively seeking Information Technology & Full-Stack Developer internship roles. Feel free to reach out directly or send a message below!
           </p>
         </div>
 
@@ -256,7 +257,7 @@ export default function Contact() {
                     <input
                       type="text"
                       required
-                      placeholder="Jane Doe"
+                      placeholder="Name"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       style={{
@@ -403,6 +404,6 @@ export default function Contact() {
           }
         }
       `}</style>
-    </section>
+    </AnimatedSection>
   );
 }

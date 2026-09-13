@@ -1,12 +1,217 @@
-import React from 'react';
-import { FolderGit2, ExternalLink, CheckCircle2, Code2, Terminal, ArrowUpRight } from 'lucide-react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { FolderGit2, CheckCircle2, Code2, ArrowUpRight, ChevronLeft, ChevronRight, ImageIcon } from 'lucide-react';
 import { GithubIcon } from './Icons';
 import { portfolioData } from '../data/portfolioData';
 import AnimatedSection from './AnimatedSection';
 
-export default function Projects() {
+/* ─── CSS injected once for carousel animations ──────────────────────────── */
+const CAROUSEL_CSS = `
+@keyframes _cs-slide-right {
+  from { opacity:0; transform:translateX(48px); }
+  to   { opacity:1; transform:translateX(0); }
+}
+@keyframes _cs-slide-left {
+  from { opacity:0; transform:translateX(-48px); }
+  to   { opacity:1; transform:translateX(0); }
+}
+@keyframes _cs-fade {
+  from { opacity:0; }
+  to   { opacity:1; }
+}
+@keyframes _cs-progress {
+  from { width:0%; }
+  to   { width:100%; }
+}
+._cs-enter-right { animation: _cs-slide-right 0.42s cubic-bezier(.22,1,.36,1) forwards; }
+._cs-enter-left  { animation: _cs-slide-left  0.42s cubic-bezier(.22,1,.36,1) forwards; }
+._cs-enter-fade  { animation: _cs-fade         0.38s ease forwards; }
+._cs-dot {
+  width:7px; height:7px; border-radius:50%;
+  background:rgba(255,255,255,0.35);
+  border:none; cursor:pointer; padding:0; flex-shrink:0;
+  transition: all 0.25s ease;
+}
+._cs-dot._cs-dot-active { background:#fff; width:20px; border-radius:4px; }
+._cs-dot:hover { background:rgba(255,255,255,0.7); }
+._cs-arrow {
+  width:32px; height:32px; border-radius:50%;
+  background:rgba(255,255,255,0.18);
+  backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,0.28);
+  color:#fff; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  transition: all 0.2s ease;
+}
+._cs-arrow:hover { background:rgba(255,255,255,0.32); transform:scale(1.1); }
+._cs-arrow:active { transform:scale(0.95); }
+.proj-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.proj-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.13);
+}
+`;
+
+/* ─── Carousel component ─────────────────────────────────────────────────── */
+function ImageCarousel({ images, title }) {
+  const imgs = Array.isArray(images) && images.length > 0 ? images : [];
+  const count = imgs.length;
+  const [idx, setIdx] = useState(0);
+  const [dir, setDir] = useState('fade'); // 'right' | 'left' | 'fade'
+  const [key, setKey] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const timerRef = useRef(null);
+
+  const goTo = useCallback((nextIdx, direction) => {
+    setDir(direction);
+    setKey(k => k + 1);
+    setIdx(((nextIdx % count) + count) % count);
+  }, [count]);
+
+  const next = useCallback(() => goTo(idx + 1, 'right'), [idx, goTo]);
+  const prev = useCallback(() => goTo(idx - 1, 'left'),  [idx, goTo]);
+
+  useEffect(() => {
+    if (count <= 1 || paused) return;
+    timerRef.current = setInterval(next, 3500);
+    return () => clearInterval(timerRef.current);
+  }, [count, paused, next]);
+
+  if (count === 0) {
+    return (
+      <div style={{
+        height: '220px', background: 'var(--bg-subtle)',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        borderBottom: '1px solid var(--border-color)', color: 'var(--text-muted)',
+      }}>
+        <ImageIcon size={32} />
+      </div>
+    );
+  }
+
+  const animClass = dir === 'right' ? '_cs-enter-right'
+                  : dir === 'left'  ? '_cs-enter-left'
+                  : '_cs-enter-fade';
+
   return (
-    <AnimatedSection id="projects" className="section-wrapper" style={{ background: '#ffffff', borderTop: '1px solid var(--border-color)', borderBottom: '1px solid var(--border-color)' }}>
+    <div
+      style={{ position: 'relative', width: '100%', height: '220px',
+               overflow: 'hidden', background: '#111',
+               borderBottom: '1px solid var(--border-color)' }}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      {/* Image */}
+      <img
+        key={key}
+        src={imgs[idx]}
+        alt={`${title} – screenshot ${idx + 1}`}
+        className={animClass}
+        style={{
+          width: '100%', height: '100%', objectFit: 'cover',
+          position: 'absolute', inset: 0, display: 'block',
+        }}
+        onError={e => { e.currentTarget.style.opacity = '0'; }}
+      />
+
+      {/* Gradient overlay */}
+      <div style={{
+        position: 'absolute', inset: 0, pointerEvents: 'none',
+        background: 'linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.52) 100%)',
+      }} />
+
+      {/* Counter */}
+      <div style={{
+        position: 'absolute', top: 10, right: 10,
+        background: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(6px)',
+        color: '#fff', fontSize: '0.7rem', fontFamily: 'var(--font-mono)',
+        padding: '0.18rem 0.52rem', borderRadius: '20px',
+        border: '1px solid rgba(255,255,255,0.18)',
+      }}>
+        {idx + 1} / {count}
+      </div>
+
+      {/* Arrows */}
+      {count > 1 && (
+        <>
+          <button
+            className="_cs-arrow"
+            onClick={e => { e.stopPropagation(); prev(); }}
+            aria-label="Previous"
+            style={{ position: 'absolute', left: 10, top: '50%', transform: 'translateY(-50%)' }}
+          >
+            <ChevronLeft size={15} />
+          </button>
+          <button
+            className="_cs-arrow"
+            onClick={e => { e.stopPropagation(); next(); }}
+            aria-label="Next"
+            style={{ position: 'absolute', right: 10, top: '50%', transform: 'translateY(-50%)' }}
+          >
+            <ChevronRight size={15} />
+          </button>
+        </>
+      )}
+
+      {/* Dot indicators */}
+      {count > 1 && (
+        <div style={{
+          position: 'absolute', bottom: 12, left: '50%', transform: 'translateX(-50%)',
+          display: 'flex', alignItems: 'center', gap: '6px',
+        }}>
+          {imgs.map((_, i) => (
+            <button
+              key={i}
+              className={`_cs-dot${i === idx ? ' _cs-dot-active' : ''}`}
+              onClick={e => { e.stopPropagation(); goTo(i, i > idx ? 'right' : 'left'); }}
+              aria-label={`Image ${i + 1}`}
+            />
+          ))}
+        </div>
+      )}
+
+      {/* Progress bar (auto-play) */}
+      {count > 1 && !paused && (
+        <div style={{
+          position: 'absolute', bottom: 0, left: 0, right: 0,
+          height: '3px', background: 'rgba(255,255,255,0.18)',
+        }}>
+          <div
+            key={`pb-${key}`}
+            style={{
+              height: '100%',
+              background: 'rgba(255,255,255,0.75)',
+              animation: '_cs-progress 3.5s linear forwards',
+            }}
+          />
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ─── Main Projects section ──────────────────────────────────────────────── */
+export default function Projects() {
+  /* Inject carousel CSS once */
+  useEffect(() => {
+    if (document.getElementById('_carousel-css')) return;
+    const el = document.createElement('style');
+    el.id = '_carousel-css';
+    el.textContent = CAROUSEL_CSS;
+    document.head.appendChild(el);
+  }, []);
+
+  return (
+    <AnimatedSection
+      id="projects"
+      className="section-wrapper"
+      style={{
+        background: '#ffffff',
+        borderTop: '1px solid var(--border-color)',
+        borderBottom: '1px solid var(--border-color)',
+      }}
+    >
       <div className="container">
         {/* Section Header */}
         <div className="section-header">
@@ -15,10 +220,11 @@ export default function Projects() {
             <span>University Projects</span>
           </span>
           <h2 className="section-title">
-            Featured <span style={{ color: 'var(--text-secondary)' }}>Academic & Practical Work</span>
+            Featured <span style={{ color: 'var(--text-secondary)' }}>Academic &amp; Practical Work</span>
           </h2>
           <p className="section-subtitle">
-            Real IT and development projects, automated testing frameworks, and full-stack applications completed throughout my university degree.
+            Real IT and development projects, automated testing frameworks, and full-stack applications
+            completed throughout my university degree.
           </p>
         </div>
 
@@ -33,7 +239,7 @@ export default function Projects() {
           {portfolioData.projects.map((project, index) => (
             <div
               key={project.id}
-              className={`portox-card animate-fade-up delay-${(index % 5) + 1}`}
+              className={`portox-card proj-card animate-fade-up delay-${(index % 5) + 1}`}
               style={{
                 display: 'flex',
                 flexDirection: 'column',
@@ -41,7 +247,7 @@ export default function Projects() {
                 borderRadius: 'var(--radius-md)',
               }}
             >
-              {/* Portox Browser Mockup Frame */}
+              {/* Browser mockup bar */}
               <div
                 style={{
                   background: 'var(--bg-subtle)',
@@ -52,14 +258,11 @@ export default function Projects() {
                   justifyContent: 'space-between',
                 }}
               >
-                {/* Window Traffic Dots */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ef4444' }}></span>
-                  <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#f59e0b' }}></span>
-                  <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#10b981' }}></span>
+                  <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ef4444' }} />
+                  <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#f59e0b' }} />
+                  <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#10b981' }} />
                 </div>
-
-                {/* Minimalist URL slug */}
                 <div
                   style={{
                     background: '#ffffff',
@@ -73,28 +276,14 @@ export default function Projects() {
                 >
                   github.com/{project.id}
                 </div>
-
                 <Code2 size={15} color="var(--text-muted)" />
               </div>
 
-              {/* Project Image */}
-              {project.image && (
-                <div style={{ width: '100%', height: '220px', overflow: 'hidden', borderBottom: '1px solid var(--border-color)', background: 'var(--bg-subtle)' }}>
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      display: 'block',
-                      transition: 'transform 0.4s ease',
-                    }}
-                    onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
-                    onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-                  />
-                </div>
-              )}
+              {/* Image carousel */}
+              <ImageCarousel
+                images={project.images || (project.image ? [project.image] : [])}
+                title={project.title}
+              />
 
               {/* Card Body */}
               <div
@@ -129,7 +318,6 @@ export default function Projects() {
                     >
                       {project.category}
                     </span>
-
                     <span
                       style={{
                         fontSize: '0.76rem',
@@ -170,7 +358,7 @@ export default function Projects() {
                     {project.summary}
                   </p>
 
-                  {/* Key Implementation Highlights */}
+                  {/* Key Contributions */}
                   <div style={{ marginBottom: '1.5rem' }}>
                     <div
                       style={{
@@ -185,9 +373,9 @@ export default function Projects() {
                       Key Technical Contributions:
                     </div>
                     <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                      {project.keyFeatures.map((feature, idx) => (
+                      {project.keyFeatures.map((feat, i) => (
                         <li
-                          key={idx}
+                          key={i}
                           style={{
                             display: 'flex',
                             alignItems: 'flex-start',
@@ -202,16 +390,15 @@ export default function Projects() {
                             color="var(--accent-emerald)"
                             style={{ flexShrink: 0, marginTop: '2px' }}
                           />
-                          <span>{feature}</span>
+                          <span>{feat}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
                 </div>
 
-                {/* Bottom Section: Tech Tags & Action Buttons */}
+                {/* Bottom: tags + buttons */}
                 <div>
-                  {/* Tech Tags */}
                   <div
                     style={{
                       display: 'flex',
@@ -222,9 +409,9 @@ export default function Projects() {
                       borderTop: '1px solid var(--border-subtle)',
                     }}
                   >
-                    {project.tags.map((tag, idx) => (
+                    {project.tags.map((tag, i) => (
                       <span
-                        key={idx}
+                        key={i}
                         style={{
                           fontSize: '0.76rem',
                           fontFamily: 'var(--font-mono)',
@@ -240,31 +427,22 @@ export default function Projects() {
                     ))}
                   </div>
 
-                  {/* Action Links */}
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                     <a
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="btn btn-primary"
-                      style={{
-                        flex: 1,
-                        padding: '0.65rem 1rem',
-                        fontSize: '0.86rem',
-                      }}
+                      style={{ flex: 1, padding: '0.65rem 1rem', fontSize: '0.86rem' }}
                     >
                       <GithubIcon size={16} />
                       <span>GitHub Code</span>
                       <ArrowUpRight size={14} />
                     </a>
-
                     <a
                       href="#contact"
                       className="btn btn-secondary"
-                      style={{
-                        padding: '0.65rem 1rem',
-                        fontSize: '0.86rem',
-                      }}
+                      style={{ padding: '0.65rem 1rem', fontSize: '0.86rem' }}
                     >
                       <span>Inquire</span>
                     </a>

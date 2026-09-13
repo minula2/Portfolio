@@ -119,7 +119,7 @@ export const portfolioData = {
       tags: ["React", "Node.js", "Express", "MongoDB", "REST APIs", "PAF 2026"],
       githubUrl: "https://github.com/minindumadhawa/it3030-paf-2026-smart-campus-group47",
       liveDemo: "https://github.com/minindumadhawa/it3030-paf-2026-smart-campus-group47",
-      image: "/smart-campus.png",
+      images: ["/smart-campus.png", "/smart-campus-2.png", "/smart-campus-3.png"],
       accent: "blue"
     },
     {
@@ -136,7 +136,7 @@ export const portfolioData = {
       tags: ["JavaScript", "React", "Node.js", "UI/UX", "Career Guidance"],
       githubUrl: "https://github.com/minula2/CareerPath",
       liveDemo: "https://github.com/minula2/CareerPath",
-      image: "/careerpath.png",
+      images: ["/careerpath.png", "/careerpath-2.png"],
       accent: "lime"
     },
     {
@@ -153,7 +153,7 @@ export const portfolioData = {
       tags: ["MongoDB", "Express.js", "React.js", "Node.js", "REST APIs"],
       githubUrl: "https://github.com/minula2/MERN_CRUD",
       liveDemo: "https://github.com/minula2/MERN_CRUD",
-      image: "/mern-crud.png",
+      images: ["/mern-crud.png", "/mern-crud-2.png"],
       accent: "emerald"
     },
     {
@@ -170,7 +170,7 @@ export const portfolioData = {
       tags: ["Playwright", "JavaScript", "Automation Testing", "E2E", "ITPM"],
       githubUrl: "https://github.com/minula2/singlish-playwright-itpm",
       liveDemo: "https://github.com/minula2/singlish-playwright-itpm",
-      image: "/singlish-playwright.png",
+      images: ["/singlish-playwright.png", "/singlish-playwright-2.png"],
       accent: "purple"
     },
     {
@@ -187,7 +187,7 @@ export const portfolioData = {
       tags: ["React", "JavaScript", "HCI Principles", "UI/UX Design", "Heuristic Analysis"],
       githubUrl: "https://github.com/minula2/Portfolio",
       liveDemo: "https://github.com/minula2/Portfolio",
-      image: "/fitflow-tracker.png",
+      images: ["/fitflow-tracker.png", "/fitflow-tracker-2.png"],
       accent: "dark"
     }
   ],

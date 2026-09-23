@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { UserCheck, Layers, GitBranch, CheckCircle2, Award, BookOpen, ShieldCheck, Zap } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 import AnimatedSection from './AnimatedSection';
@@ -15,7 +16,13 @@ export default function About() {
     <AnimatedSection id="about" className="section-wrapper" style={{ background: '#ffffff', borderTop: '1px solid var(--border-color)', borderBottom: '1px solid var(--border-color)' }}>
       <div className="container">
         {/* Section Header */}
-        <div className="section-header">
+        <motion.div
+          className="section-header"
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        >
           <span className="section-badge">
             <UserCheck size={14} />
             <span>About Me</span>
@@ -27,7 +34,7 @@ export default function About() {
           <p className="section-subtitle">
             Combining university computer science rigor with hands-on full-stack development experience.
           </p>
-        </div>
+        </motion.div>
 
         {/* About Grid */}
         <div
@@ -79,10 +86,10 @@ export default function About() {
               {portfolioData.about.paragraphs[2]}
             </p>
 
-            {/* Quick Skills Pills */}
+            {/* Quick Skills Pills — staggered reveal */}
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginTop: '1.75rem', paddingTop: '1.5rem', borderTop: '1px solid var(--border-subtle)' }}>
               {['Object-Oriented Programming', 'REST API Architecture', 'MERN Stack', 'Playwright Testing', 'Agile Collaboration', 'Git Flow'].map((tag, i) => (
-                <span
+                <motion.span
                   key={i}
                   style={{
                     fontSize: '0.8rem',
@@ -92,17 +99,22 @@ export default function About() {
                     background: 'var(--bg-subtle)',
                     border: '1px solid var(--border-color)',
                     color: 'var(--text-secondary)',
+                    cursor: 'default',
                   }}
+                  initial={{ opacity: 0, scale: 0.85 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: 0.3 + i * 0.06, ease: [0.16, 1, 0.3, 1] }}
+                  whileHover={{ scale: 1.07, y: -2 }}
                 >
                   #{tag}
-                </span>
+                </motion.span>
               ))}
             </div>
           </div>
 
-          {/* Right Column: 4 Pillar Highlight Cards */}
+          {/* Right Column: 4 Pillar Highlight Cards — staggered */}
           <div
-            className="animate-fade-up delay-2"
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
@@ -110,7 +122,7 @@ export default function About() {
             }}
           >
             {portfolioData.about.highlights.map((highlight, index) => (
-              <div
+              <motion.div
                 key={index}
                 className="portox-card"
                 style={{
@@ -119,8 +131,13 @@ export default function About() {
                   flexDirection: 'column',
                   gap: '0.85rem',
                 }}
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.55, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                whileHover={{ y: -4, scale: 1.015 }}
               >
-                <div
+                <motion.div
                   style={{
                     width: '44px',
                     height: '44px',
@@ -131,14 +148,16 @@ export default function About() {
                     alignItems: 'center',
                     justifyContent: 'center',
                   }}
+                  whileHover={{ rotate: 12, scale: 1.12 }}
+                  transition={{ duration: 0.25 }}
                 >
                   {highlightIcons[index]}
-                </div>
+                </motion.div>
                 <h4 style={{ fontSize: '1.1rem', fontWeight: 700 }}>{highlight.title}</h4>
                 <p style={{ fontSize: '0.92rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
                   {highlight.desc}
                 </p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

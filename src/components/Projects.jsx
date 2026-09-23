@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { motion } from 'framer-motion';
 import { FolderGit2, CheckCircle2, Code2, ArrowUpRight, ChevronLeft, ChevronRight, ImageIcon } from 'lucide-react';
 import { GithubIcon } from './Icons';
 import { portfolioData } from '../data/portfolioData';
@@ -237,15 +238,20 @@ export default function Projects() {
           }}
         >
           {portfolioData.projects.map((project, index) => (
-            <div
+            <motion.div
               key={project.id}
-              className={`portox-card proj-card animate-fade-up delay-${(index % 5) + 1}`}
+              className="portox-card proj-card"
               style={{
                 display: 'flex',
                 flexDirection: 'column',
                 overflow: 'hidden',
                 borderRadius: 'var(--radius-md)',
               }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.55, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ y: -6, boxShadow: '0 24px 60px rgba(0,0,0,0.13)' }}
             >
               {/* Browser mockup bar */}
               <div
@@ -449,7 +455,7 @@ export default function Projects() {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
